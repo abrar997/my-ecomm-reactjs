@@ -10,7 +10,11 @@ import { auth } from "../../firebase/config";
 import { toast, ToastContainer } from "react-toastify";
 import { BiLogOut } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { SET_ACTIVE_USER } from "../../redux/slice/authSlice";
+import {
+  SET_ACTIVE_USER,
+  REMOVE_ACTIVE_USER,
+} from "../../redux/slice/authSlice";
+import ShowOnLogin from "../hiddenLink/hiddenLink";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -29,8 +33,6 @@ const Header = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // console.log(user);
-        // const uid = user.uid;
         if (user.displayName === null) {
           setDisplayName(user.email.slice(0, 10));
         } else {
@@ -48,9 +50,10 @@ const Header = () => {
       } else {
         setDisplayName("");
         setPhotoURL("");
+        dispatch(REMOVE_ACTIVE_USER());
       }
     });
-  }, []);
+  }, [dispatch, displayName]);
 
   const toggleMenu = () => {
     setShow(!show);
@@ -118,12 +121,14 @@ const DesktopNav = ({
       </div>
 
       <div className="flex items-center gap-5 col-span-1 ml-auto">
-        <Link
-          to="/cart"
-          className="text-xl border border-teal-600 rounded p-2 hover:text-teal-600"
-        >
-          <FaShoppingCart />
-        </Link>
+        <ShowOnLogin>
+          <Link
+            to="/cart"
+            className="text-xl border border-teal-600 rounded p-2 hover:text-teal-600"
+          >
+            <FaShoppingCart />
+          </Link>
+        </ShowOnLogin>
         <Link
           to="/login"
           className="border border-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded"
@@ -159,15 +164,17 @@ const DesktopNav = ({
                 </span>
                 <span>Sign up</span>
               </Link>
-              <button
-                onClick={UserLogout}
-                className="flex items-center p-2 gap-3 border-b border-slate-300 hover:bg-slate-200"
-              >
-                <span className="text-lg text-teal-600 border rounded p-1">
-                  <BiLogOut />
-                </span>
-                <span>Logout</span>
-              </button>
+              <ShowOnLogin>
+                <button
+                  onClick={UserLogout}
+                  className="flex items-center p-2 gap-3 border-b border-slate-300 hover:bg-slate-200"
+                >
+                  <span className="text-lg text-teal-600 border rounded p-1">
+                    <BiLogOut />
+                  </span>
+                  <span>Logout</span>
+                </button>
+              </ShowOnLogin>
               <Link
                 to="/profile"
                 className="flex items-center p-2 gap-3 border-b border-slate-300 hover:bg-slate-200"
