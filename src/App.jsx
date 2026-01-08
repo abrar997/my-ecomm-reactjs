@@ -9,7 +9,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Header />
-        <div className="py-4 lg:px-10 px-4">
+        <div className="py-4 lg:py-6 lg:px-10 px-4">
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Contact />} path="/contact" />

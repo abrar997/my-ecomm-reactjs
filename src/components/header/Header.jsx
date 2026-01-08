@@ -15,6 +15,7 @@ import {
   REMOVE_ACTIVE_USER,
 } from "../../redux/slice/authSlice";
 import ShowOnLogin from "../hiddenLink/hiddenLink";
+import Button from "../reusable/Button";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -110,7 +111,7 @@ const DesktopNav = ({
   photoURL,
 }) => {
   return (
-    <div className="lg:grid grid-cols-4 w-full shadow-lg p-3 px-3 hidden bg-[#403F3F] mt-4 items-center">
+    <div className="lg:grid grid-cols-4 w-full shadow-lg p-3 px-5 hidden bg-[#403F3F] rounded mt-4 items-center">
       <div className="col-span-1 text-2xl">A-Shop</div>
       <div className="flex gap-5 items-start col-span-2 m-auto">
         {links.map((link, idx) => (
@@ -129,12 +130,7 @@ const DesktopNav = ({
             <FaShoppingCart />
           </Link>
         </ShowOnLogin>
-        <Link
-          to="/login"
-          className="border border-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded"
-        >
-          Login
-        </Link>
+        <Button isBorder to="/login" text="Login" />
         <div>
           <div className="flex items-center gap-2">
             <button

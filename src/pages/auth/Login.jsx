@@ -27,11 +27,11 @@ const Login = () => {
         toast.error(error.message);
       });
   };
-  const SignInWithGoogle = () => {
+  const SignInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
+    await signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
+        // const user = result.user;
         toast.success("Login Successful ...");
         navigate("/");
       })
@@ -42,8 +42,8 @@ const Login = () => {
 
   return (
     <>
-      <ToastContainer />
       {isLoading && <Loader />}
+      <ToastContainer />
       <div className="lg:flex lg:flex-col lg:items-center lg:justify-center lg:p-12 p-4 py-6">
         <form
           action=""
@@ -84,12 +84,16 @@ const Login = () => {
               </Link>{" "}
             </p>
           </div>
-          <button className="bg-teal-600 capitalize mt-5 text-white rounded py-2 hover:bg-teal-700">
+          <button
+            type="submit"
+            className="bg-teal-600 capitalize mt-5 text-white rounded py-2 hover:bg-teal-700"
+          >
             send
           </button>
           <div className="grid items-center justify-center gap-2 text-center">
             <span className="text-center text-slate-300">or</span>
             <button
+              type="button"
               onClick={SignInWithGoogle}
               className="bg-pink-800 lg:px-10 px-4 rounded py-2 flex items-center gap-2 hover:bg-pink-700"
             >
