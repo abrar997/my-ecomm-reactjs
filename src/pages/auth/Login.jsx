@@ -95,7 +95,7 @@ const Login = () => {
             <button
               type="button"
               onClick={SignInWithGoogle}
-              className="bg-pink-800 lg:px-10 px-4 rounded py-2 flex items-center gap-2 hover:bg-pink-700"
+              className="bg-pink-700 lg:px-10 px-4 rounded py-2 flex items-center gap-2 hover:bg-pink-800"
             >
               login with Google <BsGoogle />
             </button>
