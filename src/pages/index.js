@@ -4,3 +4,5 @@ export { default as Register } from "./auth/Register";
 export { default as Login } from "./auth/Login";
 export { default as Reset } from "./auth/Reset";
 export { default as Profile } from "./profile/profile";
+export { default as Cart } from "./cart/Cart";
+export { default as Shop } from "./gallery/Gallery";

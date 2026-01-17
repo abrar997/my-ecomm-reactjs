@@ -25,6 +25,7 @@ const Login = () => {
       })
       .catch((error) => {
         toast.error(error.message);
+        setIsLoading(false);
       });
   };
   const SignInWithGoogle = async () => {

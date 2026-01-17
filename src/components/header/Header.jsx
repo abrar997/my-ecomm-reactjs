@@ -3,13 +3,14 @@ import { Links } from "../../assets/data";
 import { FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { BsX } from "react-icons/bs";
+import { BsHeart, BsX } from "react-icons/bs";
 import { CgProfile, CgUser, CgUserAdd } from "react-icons/cg";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BiLogOut } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   SET_ACTIVE_USER,
   REMOVE_ACTIVE_USER,
@@ -25,6 +26,9 @@ const Header = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const cart = useSelector((state) => state.cart);
+
   // active link style
   const active = "text-teal-600 text-lg border-b capitalize px-1";
   const activeLink = ({ isActive }) =>
@@ -76,7 +80,19 @@ const Header = () => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
       <div className="relative lg:px-10 px-4">
         <DesktopNav
           links={Links}
@@ -86,6 +102,7 @@ const Header = () => {
           UserLogout={UserLogout}
           nameOfUser={displayName}
           photoURL={photoURL}
+          cartItemsLength={cart.items.length}
         />
         <MobileNav
           links={Links}
@@ -109,6 +126,7 @@ const DesktopNav = ({
   UserLogout,
   nameOfUser,
   photoURL,
+  cartItemsLength,
 }) => {
   return (
     <div className="lg:grid grid-cols-4 w-full shadow-lg p-3 px-5 hidden bg-[#403F3F] rounded mt-4 items-center">
@@ -125,20 +143,36 @@ const DesktopNav = ({
         <ShowOnLogin>
           <Link
             to="/cart"
-            className="text-xl border border-teal-600 rounded p-2 hover:text-teal-600"
+            className="text-xl relative border border-teal-600 rounded p-2 hover:text-teal-600 transition-colors duration-200"
           >
             <FaShoppingCart />
+            <span className="bg-red-600 text-sm text-white rounded-full w-5 h-5 -top-4 flex items-center justify-center absolute z-10 -right-2">
+              {cartItemsLength}
+            </span>
+          </Link>
+          <Link
+            to="/favorite"
+            className="text-xl relative border border-teal-600 rounded p-2 hover:text-teal-600 transition-colors duration-200"
+          >
+            <BsHeart />
+            <span className="bg-red-600 text-sm text-white rounded-full w-5 h-5 -top-4 flex items-center justify-center absolute z-10 -right-2">
+              {cartItemsLength}
+            </span>
           </Link>
         </ShowOnLogin>
         <Button isBorder to="/login" text="Login" />
-        <div>
+        <div className="relative">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setMainMenu(!mainMenu)}
-              className="bg-slate-50 rounded-full w-9 h-9 text-teal-600 flex items-center justify-center text-2xl"
+              className="bg-slate-50 rounded-full w-9 h-9 text-teal-600 flex items-center justify-center text-2xl hover:bg-slate-200 transition-colors duration-200"
             >
               {photoURL ? (
-                <img src={photoURL} alt="user image" className="rounded-full" />
+                <img
+                  src={photoURL}
+                  alt="user image"
+                  className="rounded-full w-full h-full object-cover"
+                />
               ) : (
                 <CgUser />
               )}
@@ -149,39 +183,43 @@ const DesktopNav = ({
               </p>
             )}
           </div>
-          {mainMenu && (
-            <div className="w-38 rounded bg-slate-50 text-black border grid absolute right-10 top-20 z-50">
-              <Link
-                to="/signup"
-                className="flex items-center p-2 gap-3 border-b border-slate-300 hover:bg-slate-200"
+          <div
+            className={`user-menu absolute right-0 top-14 z-50 w-48 rounded bg-slate-50 text-black border border-slate-200 shadow-lg transform transition-all duration-300 origin-top-right ${
+              mainMenu
+                ? "opacity-100 scale-100 visible"
+                : "opacity-0 scale-95 invisible"
+            }`}
+          >
+            <Link
+              to="/signup"
+              className="flex items-center p-3 gap-3 border-b border-slate-300 hover:bg-slate-200 transition-colors duration-200 first:rounded-t"
+            >
+              <span className="text-lg text-teal-600 border rounded p-1">
+                <CgUserAdd />
+              </span>
+              <span>Sign up</span>
+            </Link>
+            <ShowOnLogin>
+              <button
+                onClick={UserLogout}
+                className="w-full flex items-center p-3 gap-3 border-b border-slate-300 hover:bg-slate-200 transition-colors duration-200"
               >
                 <span className="text-lg text-teal-600 border rounded p-1">
-                  <CgUserAdd />
+                  <BiLogOut />
                 </span>
-                <span>Sign up</span>
-              </Link>
-              <ShowOnLogin>
-                <button
-                  onClick={UserLogout}
-                  className="flex items-center p-2 gap-3 border-b border-slate-300 hover:bg-slate-200"
-                >
-                  <span className="text-lg text-teal-600 border rounded p-1">
-                    <BiLogOut />
-                  </span>
-                  <span>Logout</span>
-                </button>
-              </ShowOnLogin>
-              <Link
-                to="/profile"
-                className="flex items-center p-2 gap-3 border-b border-slate-300 hover:bg-slate-200"
-              >
-                <span className="text-lg text-teal-600 border rounded p-1">
-                  <CgProfile />
-                </span>
-                <span>Profile</span>
-              </Link>
-            </div>
-          )}
+                <span>Logout</span>
+              </button>
+            </ShowOnLogin>
+            <Link
+              to="/profile"
+              className="flex items-center p-3 gap-3 hover:bg-slate-200 transition-colors duration-200 last:rounded-b"
+            >
+              <span className="text-lg text-teal-600 border rounded p-1">
+                <CgProfile />
+              </span>
+              <span>Profile</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -191,60 +229,70 @@ const DesktopNav = ({
 const MobileNav = ({ hideMenu, toggleMenu, links, show, isActive }) => {
   return (
     <div className="flex flex-col lg:hidden">
-      <div className="flex justify-between shadow p-4">
-        <span className="text-2xl">a-Shop</span>
-        <div className="flex  items-center gap-2">
+      <div className="flex justify-between shadow p-4 bg-[#403F3F]">
+        <span className="text-2xl text-teal-600">a-Shop</span>
+        <div className="flex items-center gap-2">
           <Link
             to="/cart"
-            className="text-teal-600 text-lg hover:text-teal-600"
+            className="text-teal-600 text-lg hover:text-teal-500 transition-colors duration-200"
           >
             <FaShoppingCart />
           </Link>
-          <button onClick={toggleMenu} className="text-2xl">
+          <button
+            onClick={toggleMenu}
+            className="text-2xl text-teal-600 hover:text-teal-500 transition-colors duration-200"
+          >
             <HiOutlineMenuAlt3 />
           </button>
         </div>
       </div>
-      {show && (
-        <div
-          className={`gap-5 h-screen absolute z-30 inset-0 bg-[#444343] py-16 px-4  ${
-            show
-              ? "w-[-330px] transition-all duration-300 ease-in-out"
-              : "w-ull"
-          }`}
-        >
-          <div className="absolute right-3 top-4">
-            <button
-              onClick={hideMenu}
-              className="text-2xl text-teal-600 border rounded"
-            >
-              <BsX />
-            </button>
-          </div>
-          <div className="absolute top-3">
-            <span className="text-2xl">a-Shop</span>
-          </div>
-          <div className="flex flex-col gap-5 items-start">
-            {links.map((link, idx) => (
-              <NavLink to={link.to} key={idx} className={isActive}>
-                {link.name}
-              </NavLink>
-            ))}
-            <Link
-              to="/signup"
-              className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded"
-            >
-              Sign up
-            </Link>
-            <Link
-              to="/login"
-              className="border border-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded"
-            >
-              Login
-            </Link>
-          </div>
+      <div
+        className={`mobile-menu fixed inset-0 bg-black/50 z-20 transition-opacity duration-300 ${
+          show ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={hideMenu}
+      />
+      <div
+        className={`fixed top-0 left-0 h-screen w-80 bg-[#444343] py-16 px-4 z-30 transform transition-transform duration-300 ease-in-out ${
+          show ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="absolute right-3 top-4">
+          <button
+            onClick={hideMenu}
+            className="text-2xl text-teal-600 hover:text-teal-500 border rounded p-1 transition-colors duration-200"
+          >
+            <BsX />
+          </button>
         </div>
-      )}
+        <div className="absolute top-3 text-2xl text-teal-600">a-Shop</div>
+        <div className="flex flex-col gap-5 items-start mt-16">
+          {links.map((link, idx) => (
+            <NavLink
+              to={link.to}
+              key={idx}
+              className={isActive}
+              onClick={hideMenu}
+            >
+              {link.name}
+            </NavLink>
+          ))}
+          <Link
+            to="/signup"
+            className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded transition-colors duration-200 w-full text-center"
+            onClick={hideMenu}
+          >
+            Sign up
+          </Link>
+          <Link
+            to="/login"
+            className="border border-teal-600 hover:bg-teal-600 text-teal-600 hover:text-white px-4 py-2 rounded transition-colors duration-200 w-full text-center"
+            onClick={hideMenu}
+          >
+            Login
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

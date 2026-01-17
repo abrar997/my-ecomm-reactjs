@@ -3,7 +3,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // components
 import { Header, Footer } from "./components";
 // pages
-import { Home, Contact, Register, Login, Reset, Profile } from "./pages";
+import {
+  Home,
+  Contact,
+  Register,
+  Login,
+  Reset,
+  Profile,
+  Cart,
+  Shop,
+} from "./pages";
 function App() {
   return (
     <div>
@@ -17,6 +26,8 @@ function App() {
             <Route element={<Login />} path="/login" />
             <Route element={<Reset />} path="/reset" />
             <Route element={<Profile />} path="/profile" />
+            <Route element={<Cart />} path="/cart" />
+            <Route element={<Shop />} path="/shop" />
           </Routes>
         </div>
         <Footer />
