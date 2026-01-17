@@ -1,4 +1,5 @@
 import { BsBasket, BsHeart } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Product = ({ idx, handleAddToCart, product }) => {
   return (
@@ -36,12 +37,12 @@ const Product = ({ idx, handleAddToCart, product }) => {
           <span className="text-pink-600 font-bold">
             ${product.price.toFixed(2)}
           </span>
-          <button
-            onClick={() => handleViewProduct(product)}
+          <Link
+            to={`/product/${product.id}`}
             className="text-teal-500 hover:text-teal-400 text-xs font-semibold"
           >
             View
-          </button>
+          </Link>
         </div>
       </div>
     </div>

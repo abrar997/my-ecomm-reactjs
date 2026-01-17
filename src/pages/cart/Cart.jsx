@@ -31,7 +31,7 @@ const Cart = () => {
           <div className="text-center mt-20 grid items-center justify-center">
             <p className="text-slate-300 text-lg mb-4">Your cart is empty</p>
             <Link
-              to="/"
+              to="/shop"
               className="text-teal-500 hover:text-teal-400 underline"
             >
               Continue Shopping
@@ -46,7 +46,7 @@ const Cart = () => {
                     key={item.id}
                     className="flex items-center gap-4 p-6 border-b border-teal-900 last:border-b-0"
                   >
-                    <div className="w-24 h-24 flex-shrink-0 bg-[#2e2e2e] rounded flex items-center justify-center">
+                    <div className="w-24 h-24 shrink-0 bg-[#2e2e2e] rounded flex items-center justify-center">
                       <img
                         src={item.image}
                         alt={item.title}
@@ -54,7 +54,7 @@ const Cart = () => {
                       />
                     </div>
 
-                    <div className="flex-grow">
+                    <div className="grow">
                       <h3 className="text-teal-500 font-semibold mb-2 line-clamp-2">
                         {item.title}
                       </h3>
@@ -127,10 +127,13 @@ const Cart = () => {
                   </span>
                 </div>
 
-                <div className="space-y-3 mb-4">
-                  <button className="w-full bg-teal-500 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded transition duration-200">
+                <div className="grid gap-4 text-center mb-4">
+                  <Link
+                    to="/checkout"
+                    className="w-full bg-teal-500 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded transition duration-200"
+                  >
                     Proceed to Checkout
-                  </button>
+                  </Link>
                   <Link
                     to="/shop"
                     className="block text-center border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white font-semibold py-3 px-4 rounded transition duration-200"

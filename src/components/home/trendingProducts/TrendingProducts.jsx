@@ -70,10 +70,10 @@ const TrendingProducts = () => {
           <div className="flex justify-between absolute inset-y-1/2 w-full z-10">
             <div className="prev-btn bg-pink-600 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
               <BiLeftArrow />
-            </div>{" "}
+            </div>
             <div className="next-btn bg-pink-600 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
               <BiRightArrow />
-            </div>{" "}
+            </div>
           </div>
         </Swiper>
       </div>
