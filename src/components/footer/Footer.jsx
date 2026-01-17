@@ -5,9 +5,9 @@ const Footer = () => {
   const currentYear = year.getFullYear();
 
   return (
-    <div className="bg-[#403F3F]  py-5 text-center capitalize">
+    <div className="bg-[#232222]  py-5 text-center capitalize">
       <span className="flex items-center justify-center gap-1">
-        <CgCopyright className="text-teal-600" /> {currentYear} All rights
+        <CgCopyright className="text-teal-500" /> {currentYear} All rights
         reserved
       </span>
     </div>

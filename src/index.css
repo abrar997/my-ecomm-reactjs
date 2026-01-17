@@ -33,6 +33,8 @@ button {
 
 @theme {
   --background-color-main: #444343;
+  --color-primary: oklch(70.4% 0.14 182.503);
+  --background-primary: #403f3f;
 }
 
 @layer base {

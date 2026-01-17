@@ -7,12 +7,12 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
-import Button from "../reusable/Button";
+import { Button } from "../..";
 import { sliderData } from "./SliderData";
 
 const Slider = () => {
   return (
-    <div className="bg-[#403F3F] rounded relative">
+    <div className="bg-[#232222] rounded relative">
       <Swiper
         pagination={{
           type: "fraction",
@@ -31,7 +31,7 @@ const Slider = () => {
                   <h1 className="lg:text-5xl text-2xl font-semibold">
                     {slide.title}
                   </h1>
-                  <p className="lg:text-[16px] text-teal-600">
+                  <p className="lg:text-[16px] text-teal-500">
                     {slide.description}
                   </p>
                 </div>

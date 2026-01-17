@@ -34,7 +34,7 @@ const Reset = () => {
           <h1 className="text-2xl capitalize text-center">Reset password</h1>
           <div className="grid gap-3">
             <div className="grid gap-2">
-              <label htmlFor="email" className="capitalize text-teal-600">
+              <label htmlFor="email" className="capitalize text-teal-500">
                 Email
               </label>
               <input
@@ -46,7 +46,7 @@ const Reset = () => {
               />
             </div>
 
-            <button className="bg-teal-600 capitalize text-white rounded py-2 hover:bg-teal-700">
+            <button className="bg-teal-500 capitalize text-white rounded py-2 hover:bg-teal-700">
               Reset password
             </button>
           </div>

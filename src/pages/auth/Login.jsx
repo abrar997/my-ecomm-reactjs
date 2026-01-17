@@ -54,7 +54,7 @@ const Login = () => {
           <h1 className="text-2xl capitalize text-center">Login</h1>
 
           <div className="grid gap-2">
-            <label htmlFor="email" className="capitalize text-teal-600">
+            <label htmlFor="email" className="capitalize text-teal-500">
               Email
             </label>
             <input
@@ -66,7 +66,7 @@ const Login = () => {
             />
           </div>
           <div className="grid gap-2">
-            <label htmlFor="password" className="capitalize text-teal-600">
+            <label htmlFor="password" className="capitalize text-teal-500">
               Password
             </label>
             <input
@@ -87,7 +87,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="bg-teal-600 capitalize mt-5 text-white rounded py-2 hover:bg-teal-700"
+            className="bg-teal-500 capitalize mt-5 text-white rounded py-2 hover:bg-teal-700"
           >
             send
           </button>

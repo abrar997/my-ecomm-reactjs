@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
-  setSelectedProduct,
   setFilters,
   resetFilters,
 } from "../../redux/slice/productSlice";
 import { addToCart } from "../../redux/slice/cartSlice";
 import Loader from "../../components/loader/Loader";
-import Product from "../../components/reusable/Product";
+import Product from "../../components/reusable/Product/Product";
 
 const Gallery = () => {
   const dispatch = useDispatch();
@@ -21,7 +20,6 @@ const Gallery = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  // Extract unique categories
   useEffect(() => {
     if (products.length > 0) {
       const uniqueCategories = [...new Set(products.map((p) => p.category))];
@@ -57,7 +55,7 @@ const Gallery = () => {
     return <div className="text-red-500 text-center py-8">Error: {error}</div>;
 
   return (
-    <div className="min-h-screen bg-[#403F3F] py-8">
+    <div className="min-h-screen bg-[#232222] py-8">
       <h1 className="text-4xl text-teal-500 font-semibold text-center mb-12">
         Product Gallery
       </h1>
@@ -74,7 +72,7 @@ const Gallery = () => {
                 <select
                   value={filters.category}
                   onChange={(e) => handleCategoryChange(e.target.value)}
-                  className="w-full bg-[#1a1a1a] text-white border border-teal-600 rounded px-3 py-2 focus:outline-none focus:border-teal-400"
+                  className="w-full bg-[#1a1a1a] text-white border border-teal-500 rounded px-3 py-2 focus:outline-none focus:border-teal-400"
                 >
                   <option value="">All Categories</option>
                   {categories.map((category) => (
@@ -101,7 +99,7 @@ const Gallery = () => {
                       filters.maxPrice
                     )
                   }
-                  className="w-full accent-teal-600"
+                  className="w-full accent-teal-500"
                 />
               </div>
 
@@ -121,7 +119,7 @@ const Gallery = () => {
                       parseInt(e.target.value)
                     )
                   }
-                  className="w-full accent-teal-600"
+                  className="w-full accent-teal-500"
                 />
               </div>
             </div>
@@ -129,7 +127,7 @@ const Gallery = () => {
             {/* Reset Button */}
             <button
               onClick={handleResetFilters}
-              className="mt-6 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-6 rounded transition-colors duration-200"
+              className="mt-6 bg-teal-500 hover:bg-teal-700 text-white font-semibold py-2 px-6 rounded transition-colors duration-200"
             >
               Reset Filters
             </button>

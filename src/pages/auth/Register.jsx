@@ -106,7 +106,7 @@ const Register = () => {
             />
           </div>
 
-          <button className="bg-teal-600 text-white rounded py-2 hover:bg-teal-700 mt-2 capitalize">
+          <button className="bg-teal-500 text-white rounded py-2 hover:bg-teal-700 mt-2 capitalize">
             send
           </button>
         </form>

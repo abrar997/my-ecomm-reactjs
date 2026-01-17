@@ -1,16 +1,15 @@
-import React from "react";
 import { TestimonialData } from "./TestimonialData";
-import { Keyboard, Pagination, Navigation } from "swiper/modules";
+import { Keyboard, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi";
 
 const Testimonial = () => {
   return (
-    <div className="text-center lg:py-16">
+    <div className="text-center lg:py-10 bg-[#232222] relative">
       <div className="border-b-2 border-t-2 border-[#28262660] rounded p-4 py-8 relative">
         <h1 className="text-4xl text-teal-500 font-semibold pb-10 italic">
           What Our Customers Say
@@ -21,8 +20,8 @@ const Testimonial = () => {
             enabled: true,
           }}
           navigation={{
-            nextEl: ".next",
-            prevEl: ".prev",
+            nextEl: ".next-btn",
+            prevEl: ".prev-btn",
           }}
           loop
           modules={[Keyboard, Navigation]}
@@ -41,15 +40,15 @@ const Testimonial = () => {
               </div>
             </SwiperSlide>
           ))}
+          <div className="flex justify-between absolute inset-y-1/2 w-full z-10">
+            <div className="prev-btn bg-pink-600 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
+              <BiLeftArrow />
+            </div>{" "}
+            <div className="next-btn bg-pink-600 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
+              <BiRightArrow />
+            </div>{" "}
+          </div>
         </Swiper>
-        <div className="flex justify-between absolute inset-0 z-30 px-12">
-          <div className="prev cursor-pointer hover:bg-pink-700 hover:text-white bg-slate-300 rounded-full w-10 h-10 text-black my-auto text-3xl flex items-center justify-center  ">
-            <HiOutlineArrowSmLeft />
-          </div>
-          <div className="next cursor-pointer hover:bg-pink-700 hover:text-white bg-slate-300 rounded-full w-10 h-10 text-black my-auto text-3xl flex items-center justify-center  ">
-            <HiOutlineArrowSmRight />
-          </div>
-        </div>
       </div>
     </div>
   );

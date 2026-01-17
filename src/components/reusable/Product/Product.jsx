@@ -4,7 +4,7 @@ const Product = ({ idx, handleAddToCart, product }) => {
   return (
     <div
       key={idx}
-      className="bg-[#232222] rounded border border-teal-900 hover:border-teal-600 transition-colors overflow-hidden group"
+      className="bg-[#232222] rounded border border-teal-900 hover:border-teal-500 transition-colors overflow-hidden group"
     >
       <div className="relative h-64 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
         <img
@@ -15,7 +15,7 @@ const Product = ({ idx, handleAddToCart, product }) => {
         <div className="absolute text-xl inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
           <button
             onClick={() => handleAddToCart(product)}
-            className="bg-teal-600 hover:bg-teal-700 text-white p-3 rounded-full transition-colors"
+            className="bg-teal-500 hover:bg-teal-700 text-white p-3 rounded-full transition-colors"
           >
             <BsBasket />
           </button>

@@ -6,3 +6,5 @@ export { default as Reset } from "./auth/Reset";
 export { default as Profile } from "./profile/profile";
 export { default as Cart } from "./cart/Cart";
 export { default as Shop } from "./gallery/Gallery";
+export { default as Favorite } from "./favorite/Favorite";
+export { default as Product } from "./product-page/Product";

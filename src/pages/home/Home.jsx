@@ -1,8 +1,10 @@
-import AboutSection from "../../components/home/about-section/AboutSection";
-import Categories from "../../components/home/categories/Categories";
-import Testimonial from "../../components/home/testiminal/Testimonial";
-import Slider from "../../components/slider/Slider";
-import TrendingProducts from "../../components/trendingProducts/TrendingProducts";
+import {
+  AboutSection,
+  Categories,
+  Testimonial,
+  Slider,
+  TrendingProducts,
+} from "../../components";
 
 const Home = () => {
   return (

@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { MdDeleteOutline } from "react-icons/md";
@@ -26,8 +25,8 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#403F3F] py-8">
-      <div className="max-w-7xl mx-auto px-4 grid gap-6">
+    <div className="min-h-screen bg-[#232222] py-8">
+      <div className="max-w-7xl mx-auto  grid gap-6">
         {cart.items.length === 0 ? (
           <div className="text-center mt-20 grid items-center justify-center">
             <p className="text-slate-300 text-lg mb-4">Your cart is empty</p>
@@ -41,13 +40,13 @@ const Cart = () => {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <div className="bg-[#232222] rounded border border-teal-900">
+              <div className="bg-[#363535] rounded border border-teal-900">
                 {cart.items.map((item) => (
                   <div
                     key={item.id}
                     className="flex items-center gap-4 p-6 border-b border-teal-900 last:border-b-0"
                   >
-                    <div className="w-24 h-24 flex-shrink-0 bg-[#1a1a1a] rounded flex items-center justify-center">
+                    <div className="w-24 h-24 flex-shrink-0 bg-[#2e2e2e] rounded flex items-center justify-center">
                       <img
                         src={item.image}
                         alt={item.title}
@@ -129,12 +128,12 @@ const Cart = () => {
                 </div>
 
                 <div className="space-y-3 mb-4">
-                  <button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded transition duration-200">
+                  <button className="w-full bg-teal-500 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded transition duration-200">
                     Proceed to Checkout
                   </button>
                   <Link
                     to="/shop"
-                    className="block text-center border border-teal-600 text-teal-500 hover:bg-teal-600 hover:text-white font-semibold py-3 px-4 rounded transition duration-200"
+                    className="block text-center border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white font-semibold py-3 px-4 rounded transition duration-200"
                   >
                     Continue Shopping
                   </Link>
