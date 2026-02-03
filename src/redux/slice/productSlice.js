@@ -13,7 +13,7 @@ export const fetchProducts = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 const initialState = {
@@ -52,22 +52,6 @@ const productSlice = createSlice({
       state.filteredProducts = state.products;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchProducts.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.loading = false;
-        state.products = action.payload;
-        state.filteredProducts = action.payload;
-      })
-      .addCase(fetchProducts.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      });
-  },
 });
 
 // Helper function to apply filters
@@ -76,14 +60,14 @@ const applyFilters = (state) => {
 
   if (state.filters.category) {
     filtered = filtered.filter(
-      (product) => product.category === state.filters.category
+      (product) => product.category === state.filters.category,
     );
   }
 
   filtered = filtered.filter(
     (product) =>
       product.price >= state.filters.minPrice &&
-      product.price <= state.filters.maxPrice
+      product.price <= state.filters.maxPrice,
   );
 
   state.filteredProducts = filtered;

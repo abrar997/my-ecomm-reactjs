@@ -6,11 +6,38 @@ import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
+  saveCartToFirebase,
+  replaceCart,
 } from "../../redux/slice/cartSlice";
+import { useEffect } from "react";
+import { auth, fire } from "../../firebase/config";
+import { doc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(fire, "cartItems", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          dispatch(replaceCart(docSnap.data()));
+        }
+      }
+    });
+
+    return () => unsubscribe(); // تنظيف المراقبة
+  }, [dispatch]);
+  useEffect(() => {
+    if (cart.items.length > 0) {
+      saveCartToFirebase(cart).catch((error) => {
+        console.error("Error saving cart:", error);
+      });
+    }
+  }, [cart]);
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id));
@@ -26,10 +53,10 @@ const Cart = () => {
 
   return (
     <div className="min-h-screen bg-[#232222] py-8">
-      <div className="max-w-7xl mx-auto  grid gap-6">
+      <div className="max-w-7xl mx-auto grid gap-6">
         {cart.items.length === 0 ? (
           <div className="text-center mt-20 grid items-center justify-center">
-            <p className="text-slate-300 text-lg mb-4">Your cart is empty</p>
+            <p className="text-slate-300 text-xl mb-4">Your cart is empty</p>
             <Link
               to="/shop"
               className="text-teal-500 hover:text-teal-400 underline"

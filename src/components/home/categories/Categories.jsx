@@ -33,7 +33,7 @@ const Categories = () => {
             className="relative flex items-center justify-center row-span-1 group overflow-hidden h-[400px]"
           >
             <img
-              className="relative object-scale-down group-hover:scale-150 transition-all duration-300 group-hover:rotate-3"
+              className="relative h-full lg:py-12 group-hover:scale-150 transition-all duration-300 group-hover:rotate-3"
               src={cat.image}
             />
             <h2 className="absolute bg-[#1111114e] line-clamp-2 inset-0 flex items-center justify-center lg:text-5xl text-3xl font-bold ">

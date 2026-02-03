@@ -12,11 +12,11 @@ import {
   Profile,
   Cart,
   Shop,
-  Favorite,
   ProductID,
   Checkout,
   CategoryPage,
 } from "./pages";
+import WhishList from "./pages/whishlist/Whishlist";
 function App() {
   return (
     <div>
@@ -32,7 +32,7 @@ function App() {
             <Route element={<Profile />} path="/profile" />
             <Route element={<Cart />} path="/cart" />
             <Route element={<Checkout />} path="/checkout" />
-            <Route element={<Favorite />} path="/favorite" />
+            <Route element={<WhishList />} path="/whishlist" />
             <Route element={<Shop />} path="/shop" />
             <Route element={<ProductID />} path="/product/:id" />
             <Route element={<CategoryPage />} path="/category/:type" />

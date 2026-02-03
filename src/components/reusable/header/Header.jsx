@@ -113,7 +113,7 @@ const Header = () => {
                   </span>
                 </Link>
                 <Link
-                  to="/favorite"
+                  to="/whishlist"
                   className="text-xl relative border border-teal-500 rounded p-2 hover:bg-teal-500 hover:text-white transition-all"
                 >
                   <BsHeart />

@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fire, auth } from "../../firebase/config";
+import { setDoc, doc, collection } from "firebase/firestore";
 
 const initialState = {
   items: [],
@@ -6,6 +8,31 @@ const initialState = {
   totalPrice: 0,
 };
 
+const COLLECTION_NAME = "cartItems";
+
+export const saveCartToFirebase = async (cartItems) => {
+  try {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const userCartRef = doc(fire, COLLECTION_NAME, user.uid);
+
+    await setDoc(
+      userCartRef,
+      {
+        items: cartItems.items,
+        totalQuantity: cartItems.totalQuantity,
+        totalPrice: cartItems.totalPrice,
+        updatedAt: new Date().toISOString(),
+      },
+      { merge: true },
+    );
+
+    console.log("data saved ", user.uid);
+  } catch (e) {
+    console.error("Error : data not saved ", e);
+  }
+};
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -66,9 +93,20 @@ const cartSlice = createSlice({
         state.totalPrice -= existingItem.price;
       }
     },
+    replaceCart: (state, action) => {
+      state.items = action.payload.items || [];
+      state.totalQuantity = action.payload.totalQuantity || 0;
+      state.totalPrice = action.payload.totalPrice || 0;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity } =
-  cartSlice.actions;
+export const {
+  replaceCart,
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} = cartSlice.actions;
+
 export default cartSlice.reducer;

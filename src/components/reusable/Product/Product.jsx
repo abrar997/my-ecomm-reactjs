@@ -1,7 +1,7 @@
 import { BsBasket, BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const Product = ({ idx, handleAddToCart, product }) => {
+const Product = ({ idx, handleAddToCart, product, handleAddToWhishList }) => {
   return (
     <div
       key={idx}
@@ -20,7 +20,10 @@ const Product = ({ idx, handleAddToCart, product }) => {
           >
             <BsBasket />
           </button>
-          <button className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors">
+          <button
+            onClick={() => handleAddToWhishList(product)}
+            className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors"
+          >
             <BsHeart />
           </button>
         </div>
