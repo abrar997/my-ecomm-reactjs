@@ -15,6 +15,7 @@ import {
   Favorite,
   ProductID,
   Checkout,
+  CategoryPage,
 } from "./pages";
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route element={<Favorite />} path="/favorite" />
             <Route element={<Shop />} path="/shop" />
             <Route element={<ProductID />} path="/product/:id" />
+            <Route element={<CategoryPage />} path="/category/:type" />
           </Routes>
         </div>
         <Footer />

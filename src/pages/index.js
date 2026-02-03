@@ -9,3 +9,4 @@ export { default as Shop } from "./gallery/Gallery";
 export { default as Favorite } from "./favorite/Favorite";
 export { default as ProductID } from "./product-page/ProductID";
 export { default as Checkout } from "./checkout/Checkout";
+export { default as CategoryPage } from "./category/CategoryPage";

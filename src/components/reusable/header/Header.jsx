@@ -39,7 +39,7 @@ const Header = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setDisplayName(
-          user.displayName?.slice(0, 6) || user.email.slice(0, 10)
+          user.displayName?.slice(0, 6) || user.email.slice(0, 10),
         );
         setPhotoURL(user.photoURL);
         dispatch(
@@ -48,7 +48,7 @@ const Header = () => {
             userName: user.displayName,
             userID: user.uid,
             photoURL: user.photoURL,
-          })
+          }),
         );
       } else {
         setDisplayName("");
@@ -143,7 +143,7 @@ const Header = () => {
               </Link>
               <button
                 onClick={() => setShow(!show)}
-                className="text-2xl text-teal-500 hover:text-teal-400"
+                className="text-2xl text-teal-500 hover:text-teal-400 absolute right-0"
               >
                 <HiOutlineMenuAlt3 />
               </button>
@@ -154,7 +154,7 @@ const Header = () => {
           {show && (
             <>
               <div
-                className="fixed inset-0 bg-black/50 z-20"
+                className="fixed inset-0  bg-black z-20"
                 onClick={() => setShow(false)}
               />
               <div className="fixed top-0 left-0 h-screen w-80 bg-main-700 z-30 py-16 px-4 flex flex-col gap-6 animate-slide-in">

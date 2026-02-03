@@ -2,7 +2,7 @@ import { AboutData } from "./AboutData";
 
 const AboutSection = () => {
   return (
-    <div className="bg-[#232222] p-10 lg:py-16 grid gap-12">
+    <div className="bg-[#232222] lg:p-10 p-4 py-8 lg:py-16 grid gap-12">
       <div className="flex flex-col gap-4 text-center">
         <h1 className="text-4xl text-teal-500 font-semibold">
           Why Choose Our Store?
@@ -12,7 +12,7 @@ const AboutSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-4 gap-10">
+      <div className="grid lg:grid-cols-4 grid-cols-2 gap-10">
         {AboutData.map((feat, idx) => (
           <div
             key={idx}

@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
-import { CategoriesSection } from "./CategoriesData";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const Categories = () => {
+  const { products } = useSelector((state) => state.products);
+  const categoriesWithImages = Object.values(
+    products.reduce((acc, product) => {
+      if (!acc[product.category]) {
+        acc[product.category] = {
+          name: product.category,
+          image: product.image,
+        };
+      }
+      return acc;
+    }, {}),
+  );
   return (
     <div className="bg-[#232222] p-10 lg:py-16 grid gap-8">
       <div className="grid gap-2 text-center">
@@ -12,18 +25,18 @@ const Categories = () => {
           Browse products from our most popular categories.
         </p>
       </div>
-      <div className="grid grid-cols-2 rounded ">
-        {CategoriesSection.map((cat, idx) => (
+      <div className="grid grid-cols-2 gap-2 grid-rows-2 rounded ">
+        {categoriesWithImages.map((cat, idx) => (
           <Link
-            to="/"
+            to={`/category/${cat.category}`}
             key={idx}
-            className="relative h-[400px] group overflow-hidden"
+            className="relative flex items-center justify-center row-span-1 group overflow-hidden h-[400px]"
           >
             <img
-              className="relative h-full w-full group-hover:scale-150 transition-all duration-300 group-hover:rotate-3"
+              className="relative object-scale-down group-hover:scale-150 transition-all duration-300 group-hover:rotate-3"
               src={cat.image}
             />
-            <h2 className="absolute bg-[#0d2e294e] inset-0 flex items-center justify-center text-7xl font-bold">
+            <h2 className="absolute bg-[#1111114e] line-clamp-2 inset-0 flex items-center justify-center lg:text-5xl text-3xl font-bold ">
               {cat.name}
             </h2>
           </Link>

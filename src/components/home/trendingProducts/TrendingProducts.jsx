@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper/modules";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/slice/cartSlice";
 import Product from "../../reusable/Product/Product";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
@@ -9,16 +9,14 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import { fetchProducts } from "../../../redux/slice/productSlice";
 
 const TrendingProducts = () => {
-  const [products, setProducts] = useState([]);
-
-  const fetchData = async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    setProducts(data);
-  };
+  const { products } = useSelector((state) => state.products);
+  const [trendingProducts, setTrendingProducts] = useState([]);
   const dispatch = useDispatch();
+
+  console.log(trendingProducts);
 
   const handleAddToCart = (product) => {
     dispatch(
@@ -27,14 +25,18 @@ const TrendingProducts = () => {
         title: product.title,
         price: product.price,
         image: product.image,
-      })
+      }),
     );
     console.log(product);
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setTrendingProducts(products || []);
+  }, [products]);
 
   return (
     <div className="py-16 bg-[#232222] relative">
@@ -50,15 +52,29 @@ const TrendingProducts = () => {
         <Swiper
           slidesPerView={5}
           spaceBetween={10}
-          navigation={{
+          n
+          avigation={{
             nextEl: ".next-btn",
             prevEl: ".prev-btn",
             enabled: true,
           }}
           modules={[FreeMode, Navigation]}
-          className="mySwiper"
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+          }}
         >
-          {products.slice(1, 10).map((prod, idx) => (
+          {trendingProducts.slice(0, 10).map((prod, idx) => (
             <SwiperSlide>
               <Product
                 idx={idx}
