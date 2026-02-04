@@ -4,10 +4,10 @@ import cartReducer from "./slice/cartSlice";
 import productReducer from "./slice/productSlice";
 import WhishListReducer from "./slice/whishlistSlice";
 const rootReducer = combineReducers({
+  products: productReducer,
   auth: authReducer,
   cart: cartReducer,
-  products: productReducer,
-  WhishList: WhishListReducer,
+  whishlist: WhishListReducer,
 });
 
 const store = configureStore({

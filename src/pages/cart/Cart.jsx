@@ -29,8 +29,9 @@ const Cart = () => {
       }
     });
 
-    return () => unsubscribe(); // تنظيف المراقبة
+    return () => unsubscribe();
   }, [dispatch]);
+
   useEffect(() => {
     if (cart.items.length > 0) {
       saveCartToFirebase(cart).catch((error) => {

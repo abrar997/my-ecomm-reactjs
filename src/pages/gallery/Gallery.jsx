@@ -8,13 +8,15 @@ import {
 import { addToCart } from "../../redux/slice/cartSlice";
 import Loader from "../../components/loader/Loader";
 import Product from "../../components/reusable/Product/Product";
+import { AddToWhishList } from "../../redux/slice/whishlistSlice";
 
 const Gallery = () => {
   const dispatch = useDispatch();
   const { products, filteredProducts, loading, error, filters } = useSelector(
-    (state) => state.products
+    (state) => state.products,
   );
   const [categories, setCategories] = useState([]);
+  console.log(products);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -34,7 +36,17 @@ const Gallery = () => {
         title: product.title,
         price: product.price,
         image: product.image,
-      })
+      }),
+    );
+  };
+  const handleAddToWhishList = (product) => {
+    dispatch(
+      AddToWhishList({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+      }),
     );
   };
 
@@ -96,7 +108,7 @@ const Gallery = () => {
                   onChange={(e) =>
                     handlePriceChange(
                       parseInt(e.target.value),
-                      filters.maxPrice
+                      filters.maxPrice,
                     )
                   }
                   className="w-full accent-teal-500"
@@ -116,7 +128,7 @@ const Gallery = () => {
                   onChange={(e) =>
                     handlePriceChange(
                       filters.minPrice,
-                      parseInt(e.target.value)
+                      parseInt(e.target.value),
                     )
                   }
                   className="w-full accent-teal-500"
@@ -147,6 +159,7 @@ const Gallery = () => {
                   key={product.id}
                   product={product}
                   handleAddToCart={handleAddToCart}
+                  handleAddToWhishList={handleAddToWhishList}
                   idx={idx}
                 />
               ))}

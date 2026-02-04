@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 
 const Categories = () => {
   const { products } = useSelector((state) => state.products);
@@ -12,6 +11,7 @@ const Categories = () => {
           image: product.image,
         };
       }
+
       return acc;
     }, {}),
   );

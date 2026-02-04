@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { fetchProducts } from "../../../redux/slice/productSlice";
+import { AddToWhishList } from "../../../redux/slice/whishlistSlice";
 
 const TrendingProducts = () => {
   const { products } = useSelector((state) => state.products);
@@ -21,6 +22,17 @@ const TrendingProducts = () => {
   const handleAddToCart = (product) => {
     dispatch(
       addToCart({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+      }),
+    );
+    console.log(product);
+  };
+  const handleAddToWhishList = (product) => {
+    dispatch(
+      AddToWhishList({
         id: product.id,
         title: product.title,
         price: product.price,
@@ -80,6 +92,7 @@ const TrendingProducts = () => {
                 idx={idx}
                 product={prod}
                 handleAddToCart={handleAddToCart}
+                handleAddToWhishList={handleAddToWhishList}
               />
             </SwiperSlide>
           ))}

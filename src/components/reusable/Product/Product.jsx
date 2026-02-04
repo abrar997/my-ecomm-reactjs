@@ -1,7 +1,8 @@
 import { BsBasket, BsHeart } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Product = ({ idx, handleAddToCart, product, handleAddToWhishList }) => {
+  const location = useLocation();
   return (
     <div
       key={idx}
@@ -22,7 +23,7 @@ const Product = ({ idx, handleAddToCart, product, handleAddToWhishList }) => {
           </button>
           <button
             onClick={() => handleAddToWhishList(product)}
-            className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors"
+            className={`bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors ${location.pathname === "/whishlist" && "hidden"}`}
           >
             <BsHeart />
           </button>

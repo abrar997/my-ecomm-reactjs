@@ -1,10 +1,67 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Product } from "../../components";
+import {
+  removeItemFromWhishList,
+  saveDataToFirebase,
+} from "../../redux/slice/whishlistSlice";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { auth, fire } from "../../firebase/config";
 
 const WhishList = () => {
-  const data = useSelector((state) => state.WhishList);
-  console.log(data);
+  const data = useSelector((state) => state.whishlist);
+  const user = auth.currentUser;
+  const dispatch = useDispatch();
+  const handleRemoveItem = (id) => {
+    dispatch(removeItemFromWhishList(id));
+  };
+  useEffect(() => {
+    if (data.items.length > 0) {
+      saveDataToFirebase(data);
+    }
+  }, [data, user]);
 
-  return <div className="min-h-screen bg-[#232222] py-8"></div>;
+  return (
+    <div className="min-h-screen bg-[#232222] py-8">
+      {data.items.length === 0 ? (
+        <div className="text-center mt-20 grid items-center justify-center">
+          <p className="text-slate-300 text-xl mb-4">Your WhishList is empty</p>
+          <Link
+            to="/shop"
+            className="text-teal-500 hover:text-teal-400 underline"
+          >
+            Continue Shopping
+          </Link>
+        </div>
+      ) : (
+        <div className="max-w-7xl mx-auto flex flex-col gap-4">
+          <div className="grid gap-3">
+            <h1 className="text-center text-3xl text-teal-600 font-bold capitalize">
+              Your favorite Products
+            </h1>
+
+            <div className="flex justify-start gap-2">
+              <p className="text-pink-600">Number of products :</p>
+              <span> {data.items.length}</span>
+            </div>
+          </div>
+          <div className="grid lg:grid-cols-4 grid-cols-2 gap-4">
+            {data.items.map((item, idx) => (
+              <div key={idx} className="grid gap-2">
+                <Product product={item} />
+                <button
+                  onClick={() => handleRemoveItem(item.id)}
+                  className="bg-pink-600 rounded px-2 py-1 capitalize hover:bg-pink-700 text-white"
+                >
+                  delete
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default WhishList;

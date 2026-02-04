@@ -28,6 +28,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const whishList = useSelector((state) => state.whishlist);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -117,6 +118,9 @@ const Header = () => {
                   className="text-xl relative border border-teal-500 rounded p-2 hover:bg-teal-500 hover:text-white transition-all"
                 >
                   <BsHeart />
+                  <span className="bg-red-600 text-white rounded-full w-5 h-5 -top-4 -right-2 absolute flex items-center justify-center text-xs font-bold">
+                    {whishList.items.length}
+                  </span>
                 </Link>
               </ShowOnLogin>
               <Button isBorder to="/login" text="Login" />
