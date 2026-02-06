@@ -6,7 +6,7 @@ export { default as Reset } from "./auth/Reset";
 export { default as Profile } from "./profile/profile";
 export { default as Cart } from "./cart/Cart";
 export { default as Shop } from "./gallery/Gallery";
-export { default as WhishList } from "./whishlist/Whishlist";
 export { default as ProductID } from "./product-page/ProductID";
 export { default as Checkout } from "./checkout/Checkout";
 export { default as CategoryPage } from "./category/CategoryPage";
+export { default as WhishList } from "./whishlist/WhishListPage";

@@ -11,7 +11,7 @@ import { auth, fire } from "../../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
-const WhishList = () => {
+const WhishListPage = () => {
   const data = useSelector((state) => state.whishlist);
   const user = auth.currentUser;
   const dispatch = useDispatch();
@@ -81,4 +81,4 @@ const WhishList = () => {
   );
 };
 
-export default WhishList;
+export default WhishListPage;
