@@ -30,7 +30,7 @@ const Cart = () => {
     });
 
     return () => unsubscribe();
-  }, [dispatch]);
+  }, [dispatch, cart]);
 
   useEffect(() => {
     if (cart.items.length > 0) {

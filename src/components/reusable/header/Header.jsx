@@ -6,10 +6,13 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { BsX, BsHeart } from "react-icons/bs";
 import { CgProfile, CgUser, CgUserAdd } from "react-icons/cg";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../../../firebase/config";
+import { auth, fire } from "../../../firebase/config";
+import { doc, getDoc } from "firebase/firestore";
 import { toast, ToastContainer, Bounce } from "react-toastify";
 import { BiLogOut } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
+import { replaceCart } from "../../../redux/slice/cartSlice";
+import { saveDataToWhishList } from "../../../redux/slice/whishlistSlice";
 import {
   SET_ACTIVE_USER,
   REMOVE_ACTIVE_USER,
@@ -37,7 +40,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setDisplayName(
           user.displayName?.slice(0, 6) || user.email.slice(0, 10),
@@ -55,6 +58,29 @@ const Header = () => {
         setDisplayName("");
         setPhotoURL("");
         dispatch(REMOVE_ACTIVE_USER());
+      }
+      try {
+        const cartRef = doc(fire, "cartItems", user.uid);
+        const cartSnap = await getDoc(cartRef);
+        if (cartSnap.exists()) {
+          dispatch(replaceCart(cartSnap.data()));
+        }
+      } catch (error) {
+        console.error("Error restoring cart:", error);
+      }
+
+      // Restore wishlist from Firebase
+      try {
+        const whishlistRef = doc(fire, "whishlist", user.uid);
+        const whishlistSnap = await getDoc(whishlistRef);
+        const cartRef = doc(fire, "cartItems", user.uid);
+        const cartSnap = await getDoc(cartRef);
+        if (whishlistSnap.exists() || cartSnap.exists()) {
+          dispatch(saveDataToWhishList(whishlistSnap.data()));
+          dispatch(replaceCart(cartSnap.data()));
+        }
+      } catch (error) {
+        console.error("Error restoring wishlist:", error);
       }
     });
     return unsubscribe;

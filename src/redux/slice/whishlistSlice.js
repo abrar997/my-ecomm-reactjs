@@ -49,22 +49,12 @@ const WhishListSlice = createSlice({
       const id = action.payload;
       state.items = state.items.filter((item) => item.id !== id);
     },
+    saveDataToWhishList: (state, action) => {
+      state.items = action.payload.items || [];
+    },
   },
-
-  // extraReducers: (builder) =>
-  //   builder
-  //     .addCase(actionName.pending, (state, { payload }) => {
-  //       state.loading = true;
-  //     })
-  //     .addCase(actionName.fulfilled, (state, { payload }) => {
-  //       state.loading = false;
-  //     })
-  //     .addCase(actionName.rejected, (state, { payload }) => {
-  //       state.loading = false;
-  //       state.error = payload;
-  //     }),
 });
 
-export const { AddToWhishList, removeItemFromWhishList } =
+export const { AddToWhishList, removeItemFromWhishList, saveDataToWhishList } =
   WhishListSlice.actions;
 export default WhishListSlice.reducer;

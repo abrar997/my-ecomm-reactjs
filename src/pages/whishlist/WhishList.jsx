@@ -3,10 +3,13 @@ import { Product } from "../../components";
 import {
   removeItemFromWhishList,
   saveDataToFirebase,
+  saveDataToWhishList,
 } from "../../redux/slice/whishlistSlice";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { auth, fire } from "../../firebase/config";
+import { doc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const WhishList = () => {
   const data = useSelector((state) => state.whishlist);
@@ -15,16 +18,30 @@ const WhishList = () => {
   const handleRemoveItem = (id) => {
     dispatch(removeItemFromWhishList(id));
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(fire, "whishlist", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          dispatch(saveDataToWhishList(docSnap.data()));
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, [dispatch]);
+
   useEffect(() => {
     if (data.items.length > 0) {
       saveDataToFirebase(data);
     }
-  }, [data, user]);
+  }, [data]);
 
   return (
     <div className="min-h-screen bg-[#232222] py-8">
       {data.items.length === 0 ? (
-        <div className="text-center mt-20 grid items-center justify-center">
+        <div className="text-center lg:mt-20 grid items-center justify-center">
           <p className="text-slate-300 text-xl mb-4">Your WhishList is empty</p>
           <Link
             to="/shop"
@@ -53,7 +70,7 @@ const WhishList = () => {
                   onClick={() => handleRemoveItem(item.id)}
                   className="bg-pink-600 rounded px-2 py-1 capitalize hover:bg-pink-700 text-white"
                 >
-                  delete
+                  remove
                 </button>
               </div>
             ))}
