@@ -15,8 +15,8 @@ import {
   ProductID,
   Checkout,
   CategoryPage,
+  WhishList,
 } from "./pages";
-import WhishList from "./pages/whishlist/Whishlist";
 function App() {
   return (
     <div>
