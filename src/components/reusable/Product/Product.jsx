@@ -8,7 +8,7 @@ const Product = ({ idx, handleAddToCart, product, handleAddToWhishList }) => {
       key={idx}
       className="bg-[#232222] rounded border border-teal-900 hover:border-teal-500 transition-colors overflow-hidden group"
     >
-      <div className="relative h-64 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
+      <div className="relative lg:h-64 h-30 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
         <img
           src={product.image}
           alt={product.title}

@@ -8,7 +8,7 @@ import {
 
 const Home = () => {
   return (
-    <div className="relative flex flex-col gap-12">
+    <div className="relative flex flex-col lg:gap-12 gap-4">
       <Slider />
       <AboutSection />
       <Testimonial />

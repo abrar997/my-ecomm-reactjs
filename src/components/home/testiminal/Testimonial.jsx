@@ -10,8 +10,8 @@ import "swiper/css/navigation";
 const Testimonial = () => {
   return (
     <div className="text-center lg:py-10 bg-[#232222] relative">
-      <div className="border-b-2 border-t-2 border-[#28262660] rounded p-4 py-8 relative">
-        <h1 className="text-4xl text-teal-500 font-semibold pb-10 italic">
+      <div className="border-b-2 border-t-2 border-[#28262660] rounded p-4 py-10 relative">
+        <h1 className="lg:text-4xl text-3xl text-teal-500 font-semibold pb-10 italic">
           What Our Customers Say
         </h1>
         <Swiper
@@ -40,7 +40,7 @@ const Testimonial = () => {
               </div>
             </SwiperSlide>
           ))}
-          <div className="flex justify-between absolute inset-y-1/2 w-full z-10">
+          <div className="flex justify-between absolute lg:inset-y-1/2 inset-y-1/5 w-full z-10">
             <div className="prev-btn bg-pink-600 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
               <BiLeftArrow />
             </div>{" "}

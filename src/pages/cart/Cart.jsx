@@ -53,8 +53,8 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#232222] py-8">
-      <div className="max-w-7xl mx-auto grid gap-6">
+    <div className="min-h-screen bg-[#232222] py-8 px-2 lg:px-0">
+      <div className="lg:max-w-7xl lg:mx-auto grid lg:gap-6">
         {cart.items.length === 0 ? (
           <div className="text-center mt-20 grid items-center justify-center">
             <p className="text-slate-300 text-xl mb-4">Your cart is empty</p>
@@ -72,7 +72,7 @@ const Cart = () => {
                 {cart.items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center gap-4 p-6 border-b border-teal-900 last:border-b-0"
+                    className="lg:flex items-center lg:gap-4 gap-2 lg:p-6 p-3 border-b border-teal-900 last:border-b-0"
                   >
                     <div className="w-24 h-24 shrink-0 bg-[#2e2e2e] rounded flex items-center justify-center">
                       <img
@@ -82,7 +82,7 @@ const Cart = () => {
                       />
                     </div>
 
-                    <div className="grow">
+                    <div className="lg:grow">
                       <h3 className="text-teal-500 font-semibold mb-2 line-clamp-2">
                         {item.title}
                       </h3>
@@ -91,7 +91,7 @@ const Cart = () => {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3 bg-[#1a1a1a] px-3 py-2 rounded">
+                    <div className="flex items-center gap-3 bg-[#1a1a1a] px-3 py-2 mt-4 lg:mt-0 rounded">
                       <button
                         onClick={() => handleDecreaseQuantity(item.id)}
                         className="text-teal-500 hover:text-teal-400 p-1"
@@ -109,7 +109,7 @@ const Cart = () => {
                       </button>
                     </div>
 
-                    <div className="text-right">
+                    <div className="text-right mt-1 lg:mt-0">
                       <p className="text-slate-300 text-sm mb-2">Subtotal</p>
                       <p className="text-pink-600 font-bold">
                         ${item.totalPrice.toFixed(2)}

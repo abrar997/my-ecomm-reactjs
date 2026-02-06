@@ -34,7 +34,7 @@ const ProductID = () => {
           title: product.title,
           price: product.price,
           image: product.image,
-        })
+        }),
       );
     }
     toast.success(`Added ${quantity} item(s) to cart!`);
@@ -76,7 +76,7 @@ const ProductID = () => {
   };
 
   return (
-    <div className="bg-[#232222] grid grid-cols-5 rounded border p-6 px-12 gap-6 border-teal-900 hover:border-teal-500 transition-colors overflow-hidden group">
+    <div className="bg-[#232222] grid lg:grid-cols-5 rounded border lg:p-6 px-3 py-8 lg:px-12 gap-6 border-teal-900 hover:border-teal-500 transition-colors overflow-hidden group">
       <div className="border border-teal-900 group-hover:border-teal-500 p-4 rounded col-span-2">
         <img src={product.image} className="h-full w-full" />
       </div>

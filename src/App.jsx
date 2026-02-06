@@ -19,10 +19,10 @@ import {
 } from "./pages";
 function App() {
   return (
-    <div>
+    <div className="bg-[#2e2e2e]">
       <BrowserRouter>
         <Header />
-        <div className="py-4 lg:py-6 lg:px-10 px-4">
+        <div className="py-4 lg:py-6 lg:px-10 px-2">
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Contact />} path="/contact" />

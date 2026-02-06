@@ -51,18 +51,18 @@ const WhishListPage = () => {
           </Link>
         </div>
       ) : (
-        <div className="max-w-7xl mx-auto flex flex-col gap-4">
+        <div className="lg:max-w-7xl lg:mx-auto flex flex-col lg:gap-4">
           <div className="grid gap-3">
-            <h1 className="text-center text-3xl text-teal-600 font-bold capitalize">
+            <h1 className="text-center text-3xl lg:text-4xl text-teal-600 font-bold capitalize">
               Your favorite Products
             </h1>
 
-            <div className="flex justify-start gap-2">
+            <div className="flex justify-start gap-2 p-2 lg:p-0">
               <p className="text-pink-600">Number of products :</p>
               <span> {data.items.length}</span>
             </div>
           </div>
-          <div className="grid lg:grid-cols-4 grid-cols-2 gap-4">
+          <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 p-2 lg:p-0">
             {data.items.map((item, idx) => (
               <div key={idx} className="grid gap-2">
                 <Product product={item} />

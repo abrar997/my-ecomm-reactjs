@@ -116,67 +116,56 @@ const Header = () => {
         }`}
       >
         <div className="relative lg:px-10 px-4">
-          {/* Desktop Nav */}
-          <div className="hidden lg:grid grid-cols-4 w-full p-3 px-5 items-center gap-4">
-            <h1 className="text-2xl font-bold text-teal-500">A-Shop</h1>
+          <div className="flex justify-between  w-full lg:p-3 lg:px-5 items-center gap-4">
+            <h1 className="lg:text-2xl font-bold text-teal-500">A-Shop</h1>
 
-            <div className="flex gap-5 items-center col-span-2 justify-center">
+            <div className="lg:flex gap-5 m-auto items-center col-span-2 justify-center hidden">
               {Links.map((link, idx) => (
                 <NavLink key={idx} to={link.to} className={activeLink}>
                   {link.name}
                 </NavLink>
               ))}
             </div>
-
-            <div className="flex items-center gap-4 justify-end">
+            <div className="flex items-center gap-4">
               <ShowOnLogin>
-                <Link
-                  to="/cart"
-                  className="text-xl relative border border-teal-500 rounded p-2 hover:bg-teal-500 hover:text-white transition-all"
-                >
-                  <FaShoppingCart />
-                  <span className="bg-red-600 text-white rounded-full w-5 h-5 -top-4 -right-2 absolute flex items-center justify-center text-xs font-bold">
-                    {cart.items.length}
-                  </span>
-                </Link>
-                <Link
-                  to="/whishlist"
-                  className="text-xl relative border border-teal-500 rounded p-2 hover:bg-teal-500 hover:text-white transition-all"
-                >
-                  <BsHeart />
-                  <span className="bg-red-600 text-white rounded-full w-5 h-5 -top-4 -right-2 absolute flex items-center justify-center text-xs font-bold">
-                    {whishList.items.length}
-                  </span>
-                </Link>
+                <div className="py-4 lg:p-0 flex items-center gap-3 lg:gap-4 lg:justify-end">
+                  <Link
+                    to="/cart"
+                    className="text-xl relative border border-teal-500 rounded lg:p-2 p-1 hover:bg-teal-500 hover:text-white transition-all"
+                  >
+                    <FaShoppingCart />
+                    <span className="bg-red-600 text-white rounded-full w-5 h-5 -top-4 -right-2 absolute flex items-center justify-center text-xs font-bold">
+                      {cart.items.length}
+                    </span>
+                  </Link>
+                  <Link
+                    to="/whishlist"
+                    className="text-xl relative border border-teal-500 rounded lg:p-2 p-1 hover:bg-teal-500 hover:text-white transition-all"
+                  >
+                    <BsHeart />
+                    <span className="bg-red-600 text-white rounded-full w-5 h-5 -top-4 -right-2 absolute flex items-center justify-center text-xs font-bold">
+                      {whishList.items.length}
+                    </span>
+                  </Link>
+                  <button
+                    onClick={() => setShow(!show)}
+                    className="text-2xl text-teal-500 hover:text-teal-400 lg:hidden"
+                  >
+                    <HiOutlineMenuAlt3 />
+                  </button>
+                </div>
               </ShowOnLogin>
-              <Button isBorder to="/login" text="Login" />
+              <div className="hidden lg:flex items-center lg:gap-4">
+                <Button isBorder to="/login" text="Login" />
 
-              <UserMenu
-                mainMenu={mainMenu}
-                setMainMenu={setMainMenu}
-                displayName={displayName}
-                photoURL={photoURL}
-                handleLogout={handleLogout}
-              />
-            </div>
-          </div>
-
-          {/* Mobile Nav */}
-          <div className="flex lg:hidden justify-between items-center p-4">
-            <h1 className="text-2xl font-bold text-teal-500">a-Shop</h1>
-            <div className="flex items-center gap-3">
-              <Link
-                to="/cart"
-                className="text-teal-500 text-lg hover:text-teal-400"
-              >
-                <FaShoppingCart />
-              </Link>
-              <button
-                onClick={() => setShow(!show)}
-                className="text-2xl text-teal-500 hover:text-teal-400 absolute right-0"
-              >
-                <HiOutlineMenuAlt3 />
-              </button>
+                <UserMenu
+                  mainMenu={mainMenu}
+                  setMainMenu={setMainMenu}
+                  displayName={displayName}
+                  photoURL={photoURL}
+                  handleLogout={handleLogout}
+                />
+              </div>
             </div>
           </div>
 
@@ -184,18 +173,18 @@ const Header = () => {
           {show && (
             <>
               <div
-                className="fixed inset-0  bg-black z-20"
+                className="fixed inset-0 bg-black z-20"
                 onClick={() => setShow(false)}
               />
-              <div className="fixed top-0 left-0 h-screen w-80 bg-main-700 z-30 py-16 px-4 flex flex-col gap-6 animate-slide-in">
+              <div className="fixed top-0 left-0 bg-black w-screen h-screen bg-main-700 z-30 py-16 px-4 flex flex-col gap-6 animate-slide-in">
                 <button
                   onClick={() => setShow(false)}
-                  className="absolute right-3 top-4 text-2xl text-teal-500"
+                  className="text-2xl text-teal-500 ml-auto absolute top-4 right-4"
                 >
                   <BsX />
                 </button>
 
-                <div className="flex flex-col gap-4 mt-8">
+                <div className="flex flex-col gap-4 mt-4">
                   {Links.map((link, idx) => (
                     <NavLink
                       key={idx}

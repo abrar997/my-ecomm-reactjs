@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --background-color-main: #444343;
+  --color-primary: oklch(70.4% 0.14 182.503);
+  --background-primary: #403f3f;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -18,6 +24,7 @@
 button {
   cursor: pointer;
 }
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -29,12 +36,6 @@ button {
   button {
     background-color: #f9f9f9;
   }
-}
-
-@theme {
-  --background-color-main: #444343;
-  --color-primary: oklch(70.4% 0.14 182.503);
-  --background-primary: #403f3f;
 }
 
 @layer base {

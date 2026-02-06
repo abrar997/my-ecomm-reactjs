@@ -68,14 +68,14 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-[#232222] py-8">
-      <h1 className="text-4xl text-teal-500 font-semibold text-center mb-12">
+      <h1 className="lg:text-4xl text-3xl text-teal-500 font-semibold text-center lg:mb-12 mb-6">
         Product Gallery
       </h1>
-      <div className="grid grid-cols-3">
-        <div className="px-4 cols-span-1">
+      <div className="grid lg:grid-cols-3">
+        <div className="lg:px-4 lg:cols-span-1 px-2">
           {/* Filters Section */}
-          <div className="mb-8 bg-[#232222] p-6 rounded border border-teal-900">
-            <div className="grid grid-cols-1  gap-6">
+          <div className="mb-8 bg-[#232222] lg:p-6 p-3 rounded border border-teal-900">
+            <div className="grid grid-cols-1 gap-6">
               {/* Category Filter */}
               <div>
                 <label className="text-teal-500 font-semibold block mb-3">
@@ -153,7 +153,7 @@ const Gallery = () => {
         <div className="col-span-2 pr-4">
           {/* Products Grid */}
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProducts.map((product, idx) => (
                 <Product
                   key={product.id}

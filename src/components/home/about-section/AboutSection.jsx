@@ -2,24 +2,24 @@ import { AboutData } from "./AboutData";
 
 const AboutSection = () => {
   return (
-    <div className="bg-[#232222] lg:p-10 p-4 py-8 lg:py-16 grid gap-12">
-      <div className="flex flex-col gap-4 text-center">
-        <h1 className="text-4xl text-teal-500 font-semibold">
+    <div className="bg-[#232222] lg:p-10 p-2 py-10 lg:py-16 grid lg:gap-12 gap-6">
+      <div className="flex flex-col lg:gap-4 gap-2 text-center">
+        <h1 className="lg:text-4xl text-3xl text-teal-500 font-semibold">
           Why Choose Our Store?
         </h1>
-        <p className="w-1/2 m-auto text-lg text-slate-300">
+        <p className="lg:w-1/2 m-auto lg:text-lg text-slate-300">
           We provide high-quality products with excellent customer service.
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-4 grid-cols-2 gap-10">
+      <div className="grid lg:grid-cols-4 lg:gap-10 gap-3">
         {AboutData.map((feat, idx) => (
           <div
             key={idx}
             className="border rounded border-teal-500 items-center justify-center text-center p-4 py-8 flex flex-col gap-2"
           >
             <img src={feat.icon} className="w-2/12" />
-            <h2 className="text-xl font-semibold text-teal-500">
+            <h2 className="lg:text-xl  text-lg font-semibold text-teal-500">
               {feat.title}
             </h2>
             <p className="text-slate-100">{feat.text}</p>

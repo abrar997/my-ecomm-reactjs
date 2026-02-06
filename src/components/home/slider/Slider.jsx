@@ -25,10 +25,10 @@ const Slider = () => {
       >
         {sliderData.map((slide, idx) => (
           <SwiperSlide key={idx}>
-            <div className="grid grid-cols-4 items-center">
-              <div className="lg:gap-8 gap-3 lg:px-10 px-4 flex flex-col items-start col-span-2">
+            <div className="grid lg:grid-cols-4 items-center">
+              <div className="lg:gap-8 gap-3 lg:px-10 p-2 pb-10 pt-4 flex flex-col items-start col-span-2">
                 <div className="grid gap-3">
-                  <h1 className="lg:text-5xl text-2xl font-semibold">
+                  <h1 className="lg:text-5xl text-3xl font-semibold">
                     {slide.title}
                   </h1>
                   <p className="lg:text-[16px] text-teal-500">
@@ -42,8 +42,8 @@ const Slider = () => {
                 </p>
                 <Button text="Details" />
               </div>
-              <div className="flex flex-col h-[60vh] items-center relative justify-center col-span-2">
-                <div className="z-10 absolute bg-teal-200 blur-2xl rounded-full w-64 h-64 m-auto"></div>
+              <div className="flex flex-col lg:h-[60vh] h-50 items-center relative justify-center col-span-2">
+                <div className="z-10 absolute lg:bg-teal-300 bg-teal-400 blur-2xl rounded-full w-64 h-64 m-auto"></div>
                 <div className="absolute z-20">
                   <img
                     src={slide.image}

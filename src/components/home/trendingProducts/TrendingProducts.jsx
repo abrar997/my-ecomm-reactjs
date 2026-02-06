@@ -51,38 +51,45 @@ const TrendingProducts = () => {
   }, [products]);
 
   return (
-    <div className="py-16 bg-[#232222] relative">
-      <div className="grid gap-2 text-center pb-8">
-        <h1 className="text-4xl text-teal-500 font-semibold">
+    <div className="lg:py-16 py-10 bg-[#232222] relative">
+      <div className="grid gap-2 text-center lg:pb-8 pb-7">
+        <h1 className="lg:text-4xl text-3xl text-teal-500 font-semibold">
           Trending Products
         </h1>
         <p className="text-slate-300">
           Browse products from our most popular categories.
         </p>
       </div>
-      <div className="mx-4">
+      <div className="lg:mx-4 mx-2">
         <Swiper
           slidesPerView={5}
           spaceBetween={10}
-          n
-          avigation={{
+          navigation={{
             nextEl: ".next-btn",
             prevEl: ".prev-btn",
             enabled: true,
           }}
           modules={[FreeMode, Navigation]}
           breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
             640: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            768: {
               slidesPerView: 2,
               spaceBetween: 20,
             },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
             1024: {
               slidesPerView: 4,
-              spaceBetween: 20,
+              spaceBetween: 15,
+            },
+            1280: {
+              slidesPerView: 5,
+              spaceBetween: 10,
             },
           }}
         >
@@ -97,12 +104,12 @@ const TrendingProducts = () => {
             </SwiperSlide>
           ))}
           <div className="flex justify-between absolute inset-y-1/2 w-full z-10">
-            <div className="prev-btn bg-pink-600 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
+            <button className="prev-btn bg-pink-600 hover:bg-pink-700 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center transition-colors">
               <BiLeftArrow />
-            </div>
-            <div className="next-btn bg-pink-600 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
+            </button>
+            <button className="next-btn bg-pink-600 hover:bg-pink-700 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center transition-colors">
               <BiRightArrow />
-            </div>
+            </button>
           </div>
         </Swiper>
       </div>
