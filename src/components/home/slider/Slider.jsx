@@ -31,11 +31,11 @@ const Slider = () => {
                   <h1 className="lg:text-5xl text-3xl font-semibold">
                     {slide.title}
                   </h1>
-                  <p className="lg:text-[16px] text-teal-500">
+                  <p className="lg:text-[16px] text-primary">
                     {slide.description}
                   </p>
                 </div>
-                <p className="text-slate-300 text-sm lg:text-[16px]">
+                <p className="text-lightWhite opacity-85 text-sm lg:text-[16px]">
                   We are an online shopping platform dedicated to providing
                   high-quality products at competitive prices. Our mission is to
                   make shopping easy, fast, and enjoyable for everyone.

@@ -86,15 +86,15 @@ const Checkout = () => {
     return (
       <div className="min-h-screen bg-main-600 py-8 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl text-teal-500 font-bold mb-4">
+          <h1 className="text-4xl text-primary font-bold mb-4">
             Your cart is empty
           </h1>
-          <p className="text-slate-300 mb-6">
+          <p className="text-lightWhite mb-6">
             Add items to your cart to proceed to checkout
           </p>
           <Link
             to="/shop"
-            className="bg-teal-500 hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-lg transition-colors"
+            className="bg-primary hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-lg transition-colors"
           >
             Continue Shopping
           </Link>
@@ -106,21 +106,21 @@ const Checkout = () => {
   if (orderPlaced) {
     return (
       <div className="min-h-screen bg-main-600 py-8 flex items-center justify-center">
-        <div className="bg-secondary-bg border border-teal-500 rounded-lg p-8 text-center max-w-md">
-          <div className="text-6xl text-teal-500 mb-4">✓</div>
-          <h1 className="text-4xl text-teal-500 font-bold mb-4">
+        <div className="bg-secondary-bg border border-primary rounded-lg p-8 text-center max-w-md">
+          <div className="text-6xl text-primary mb-4">✓</div>
+          <h1 className="text-4xl text-primary font-bold mb-4">
             Order Confirmed!
           </h1>
-          <p className="text-slate-300 mb-6">
+          <p className="text-lightWhite mb-6">
             Thank you for your purchase. Your order has been successfully
             placed.
           </p>
-          <p className="text-teal-500 font-semibold mb-8">
+          <p className="text-primary font-semibold mb-8">
             Order Total: ${total}
           </p>
           <Link
             to="/"
-            className="bg-teal-500 hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full block"
+            className="bg-primary hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full block"
           >
             Back to Home
           </Link>
@@ -136,8 +136,8 @@ const Checkout = () => {
           {/* Checkout Form */}
           <div className="lg:col-span-2 space-y-8">
             {/* Shipping Information */}
-            <div className="bg-secondary-bg border border-teal-500/30 rounded-lg p-6">
-              <h2 className="text-2xl text-teal-500 font-bold mb-6">
+            <div className="bg-secondary-bg border border-primary/30 rounded-lg p-6">
+              <h2 className="text-2xl text-primary font-bold mb-6">
                 Shipping Information
               </h2>
               <div className="grid grid-cols-2 gap-4">
@@ -147,7 +147,7 @@ const Checkout = () => {
                   placeholder="First Name"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="col-span-1 bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="col-span-1 bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
                 <input
                   type="text"
@@ -155,7 +155,7 @@ const Checkout = () => {
                   placeholder="Last Name"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="col-span-1 bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="col-span-1 bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
                 <input
                   type="email"
@@ -163,7 +163,7 @@ const Checkout = () => {
                   placeholder="Email Address"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="col-span-2 bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="col-span-2 bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
                 <input
                   type="tel"
@@ -171,7 +171,7 @@ const Checkout = () => {
                   placeholder="Phone Number"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="col-span-2 bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="col-span-2 bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
                 <input
                   type="text"
@@ -179,7 +179,7 @@ const Checkout = () => {
                   placeholder="Street Address"
                   value={formData.address}
                   onChange={handleInputChange}
-                  className="col-span-2 bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="col-span-2 bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
                 <input
                   type="text"
@@ -187,7 +187,7 @@ const Checkout = () => {
                   placeholder="City"
                   value={formData.city}
                   onChange={handleInputChange}
-                  className="col-span-1 bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="col-span-1 bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
                 <input
                   type="text"
@@ -195,7 +195,7 @@ const Checkout = () => {
                   placeholder="State"
                   value={formData.state}
                   onChange={handleInputChange}
-                  className="col-span-1 bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="col-span-1 bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
                 <input
                   type="text"
@@ -203,14 +203,14 @@ const Checkout = () => {
                   placeholder="Zip Code"
                   value={formData.zipCode}
                   onChange={handleInputChange}
-                  className="col-span-2 bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="col-span-2 bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
               </div>
             </div>
 
             {/* Payment Information */}
-            <div className="bg-secondary-bg border border-teal-500/30 rounded-lg p-6">
-              <h2 className="text-2xl text-teal-500 font-bold mb-6">
+            <div className="bg-secondary-bg border border-primary/30 rounded-lg p-6">
+              <h2 className="text-2xl text-primary font-bold mb-6">
                 Payment Information
               </h2>
               <div className="space-y-4">
@@ -220,7 +220,7 @@ const Checkout = () => {
                   placeholder="Card Number"
                   value={formData.cardNumber}
                   onChange={handleInputChange}
-                  className="w-full bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                  className="w-full bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                 />
                 <div className="grid grid-cols-2 gap-4">
                   <input
@@ -229,7 +229,7 @@ const Checkout = () => {
                     placeholder="MM/YY"
                     value={formData.expiryDate}
                     onChange={handleInputChange}
-                    className="bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                    className="bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                   />
                   <input
                     type="text"
@@ -237,22 +237,22 @@ const Checkout = () => {
                     placeholder="CVV"
                     value={formData.cvv}
                     onChange={handleInputChange}
-                    className="bg-dark-bg border border-teal-500/30 text-white rounded px-4 py-3 focus:outline-none focus:border-teal-500"
+                    className="bg-dark-bg border border-primary/30 text-white rounded px-4 py-3 focus:outline-none focus:border-primary"
                   />
                 </div>
               </div>
             </div>
 
             {/* Order Items */}
-            <div className="bg-secondary-bg border border-teal-500/30 rounded-lg p-6">
-              <h2 className="text-2xl text-teal-500 font-bold mb-6">
+            <div className="bg-secondary-bg border border-primary/30 rounded-lg p-6">
+              <h2 className="text-2xl text-primary font-bold mb-6">
                 Order Items
               </h2>
               <div className="space-y-4 max-h-64 overflow-y-auto">
                 {cart.items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center justify-between p-4 bg-dark-bg rounded border border-teal-500/20 hover:border-teal-500/50 transition-colors"
+                    className="flex items-center justify-between p-4 bg-dark-bg rounded border border-primary/20 hover:border-primary/50 transition-colors"
                   >
                     <div className="flex items-center gap-4 flex-1">
                       <img
@@ -261,10 +261,10 @@ const Checkout = () => {
                         className="w-16 h-16 object-contain bg-main-600 p-2 rounded"
                       />
                       <div className="flex-1">
-                        <p className="text-teal-500 font-semibold line-clamp-1">
+                        <p className="text-primary font-semibold line-clamp-1">
                           {item.title}
                         </p>
-                        <p className="text-slate-400 text-sm">
+                        <p className="text-lightWhite text-sm">
                           Qty: {item.quantity} × ${item.price.toFixed(2)}
                         </p>
                       </div>
@@ -288,49 +288,47 @@ const Checkout = () => {
 
           {/* Order Summary Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-secondary-bg border border-teal-500/30 rounded-lg p-6 sticky top-24 space-y-6">
-              <h2 className="text-2xl text-teal-500 font-bold">
-                Order Summary
-              </h2>
+            <div className="bg-secondary-bg border border-primary/30 rounded-lg p-6 sticky top-24 space-y-6">
+              <h2 className="text-2xl text-primary font-bold">Order Summary</h2>
 
-              <div className="space-y-4 border-b border-teal-500/20 pb-6">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-4 border-b border-primary/20 pb-6">
+                <div className="flex justify-between text-lightWhite">
                   <span>Subtotal</span>
                   <span>${cart.totalPrice.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-lightWhite">
                   <span>Shipping</span>
                   <span>${shipping.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-lightWhite">
                   <span>Tax (10%)</span>
                   <span>${tax}</span>
                 </div>
               </div>
 
               <div className="flex justify-between text-lg font-bold">
-                <span className="text-teal-500">Total</span>
+                <span className="text-primary">Total</span>
                 <span className="text-accent-500">${total}</span>
               </div>
 
               <button
                 onClick={handlePlaceOrder}
-                className="w-full bg-teal-500 hover:bg-primary-600 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200"
+                className="w-full bg-primary hover:bg-primary-600 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200"
               >
                 Place Order
               </button>
 
               <Link
                 to="/cart"
-                className="block text-center border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200"
+                className="block text-center border border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200"
               >
                 Back to Cart
               </Link>
 
               <div className="bg-dark-bg rounded p-4">
-                <p className="text-slate-400 text-sm">
+                <p className="text-lightWhite text-sm">
                   💡{" "}
-                  <span className="text-teal-500 font-semibold">
+                  <span className="text-primary font-semibold">
                     Free shipping
                   </span>{" "}
                   on orders over $100

@@ -52,7 +52,7 @@ const Register = () => {
             src="https://images.unsplash.com/photo-1505308843978-ea2cb9913b44?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
           <div className="absolute inset-0 bg-[#234d4dbd] flex items-center justify-center">
-            <h1 className="lg:text-5xl text-3xl font-semibold capitalize w-10/12 tracking-wide leading-16 text-center text-slate-300 [text-shadow:0_2px_8px_rgba(0,0,0,0.4)]">
+            <h1 className="lg:text-5xl text-3xl font-semibold capitalize w-10/12 tracking-wide leading-16 text-center text-lightWhite [text-shadow:0_2px_8px_rgba(0,0,0,0.4)]">
               start your shopping with us
             </h1>
           </div>
@@ -67,7 +67,7 @@ const Register = () => {
           </h1>
 
           <div className="grid gap-2">
-            <label htmlFor="email" className="capitalize text-teal-500">
+            <label htmlFor="email" className="capitalize text-primary">
               Email
             </label>
             <input
@@ -80,7 +80,7 @@ const Register = () => {
             />
           </div>
           <div className="grid gap-2">
-            <label htmlFor="password" className="capitalize text-teal-500">
+            <label htmlFor="password" className="capitalize text-primary">
               Password
             </label>
             <input
@@ -93,7 +93,7 @@ const Register = () => {
             />
           </div>
           <div className="grid gap-2">
-            <label htmlFor="password" className="capitalize text-teal-500">
+            <label htmlFor="password" className="capitalize text-primary">
               Confirm Password
             </label>
             <input
@@ -106,7 +106,7 @@ const Register = () => {
             />
           </div>
 
-          <button className="bg-teal-500 text-white rounded py-2 hover:bg-teal-700 mt-2 capitalize">
+          <button className="bg-primary text-white rounded py-2 hover:bg-teal-700 mt-2 capitalize">
             send
           </button>
         </form>

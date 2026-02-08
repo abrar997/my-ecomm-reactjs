@@ -34,7 +34,7 @@ const Reset = () => {
           <h1 className="text-2xl capitalize text-center">Reset password</h1>
           <div className="grid gap-3">
             <div className="grid gap-2">
-              <label htmlFor="email" className="capitalize text-teal-500">
+              <label htmlFor="email" className="capitalize text-primary">
                 Email
               </label>
               <input
@@ -46,11 +46,11 @@ const Reset = () => {
               />
             </div>
 
-            <button className="bg-teal-500 capitalize text-white rounded py-2 hover:bg-teal-700">
+            <button className="bg-primary capitalize text-white rounded py-2 hover:bg-teal-700">
               Reset password
             </button>
           </div>
-          <div className="flex justify-between text-sm text-slate-300">
+          <div className="flex justify-between text-sm text-lightWhite">
             <Link to="/login">Login</Link>
             <Link to="/signup">Register</Link>
           </div>

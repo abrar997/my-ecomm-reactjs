@@ -18,10 +18,10 @@ const Categories = () => {
   return (
     <div className="bg-[#232222] lg:p-10 p-2 lg:py-16 py-10 grid gap-8">
       <div className="grid gap-2 text-center">
-        <h1 className="lg:text-4xl text-3xl text-teal-500 font-semibold">
+        <h1 className="lg:text-4xl text-3xl text-primary font-semibold">
           Shop by Category
         </h1>
-        <p className="text-slate-300">
+        <p className="text-lightWhite">
           Browse products from our most popular categories.
         </p>
       </div>

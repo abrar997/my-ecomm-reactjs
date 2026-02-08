@@ -57,10 +57,10 @@ const Cart = () => {
       <div className="lg:max-w-7xl lg:mx-auto grid lg:gap-6">
         {cart.items.length === 0 ? (
           <div className="text-center mt-20 grid items-center justify-center">
-            <p className="text-slate-300 text-xl mb-4">Your cart is empty</p>
+            <p className="text-lightWhite text-xl mb-4">Your cart is empty</p>
             <Link
               to="/shop"
-              className="text-teal-500 hover:text-teal-400 underline"
+              className="text-primary hover:text-teal-400 underline"
             >
               Continue Shopping
             </Link>
@@ -83,10 +83,10 @@ const Cart = () => {
                     </div>
 
                     <div className="lg:grow">
-                      <h3 className="text-teal-500 font-semibold mb-2 line-clamp-2">
+                      <h3 className="text-primary font-semibold mb-2 line-clamp-2">
                         {item.title}
                       </h3>
-                      <p className="text-pink-600 font-bold">
+                      <p className="text-secondary font-bold">
                         ${item.price.toFixed(2)}
                       </p>
                     </div>
@@ -94,24 +94,24 @@ const Cart = () => {
                     <div className="flex items-center gap-3 bg-[#1a1a1a] px-3 py-2 mt-4 lg:mt-0 rounded">
                       <button
                         onClick={() => handleDecreaseQuantity(item.id)}
-                        className="text-teal-500 hover:text-teal-400 p-1"
+                        className="text-primary hover:text-teal-400 p-1"
                       >
                         <AiOutlineMinus size={16} />
                       </button>
-                      <span className="text-slate-300 px-3 min-w-[30px] text-center">
+                      <span className="text-lightWhite px-3 min-w-[30px] text-center">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => handleIncreaseQuantity(item.id)}
-                        className="text-teal-500 hover:text-teal-400 p-1"
+                        className="text-primary hover:text-teal-400 p-1"
                       >
                         <AiOutlinePlus size={16} />
                       </button>
                     </div>
 
                     <div className="text-right mt-1 lg:mt-0">
-                      <p className="text-slate-300 text-sm mb-2">Subtotal</p>
-                      <p className="text-pink-600 font-bold">
+                      <p className="text-lightWhite text-sm mb-2">Subtotal</p>
+                      <p className="text-secondary font-bold">
                         ${item.totalPrice.toFixed(2)}
                       </p>
                     </div>
@@ -129,28 +129,28 @@ const Cart = () => {
 
             <div className="lg:col-span-1">
               <div className="bg-[#232222] rounded border border-teal-900 p-6 sticky top-8">
-                <h2 className="text-xl text-teal-500 font-semibold mb-6">
+                <h2 className="text-xl text-primary font-semibold mb-6">
                   Order Summary
                 </h2>
 
                 <div className="space-y-4 mb-6 border-b border-teal-900 pb-6">
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-lightWhite">
                     <span>Subtotal</span>
                     <span>${cart.totalPrice.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-lightWhite">
                     <span>Shipping</span>
                     <span>Free</span>
                   </div>
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-lightWhite">
                     <span>Tax</span>
                     <span>${(cart.totalPrice * 0.1).toFixed(2)}</span>
                   </div>
                 </div>
 
                 <div className="flex justify-between mb-6 text-lg font-bold">
-                  <span className="text-teal-500">Total</span>
-                  <span className="text-pink-600">
+                  <span className="text-primary">Total</span>
+                  <span className="text-secondary">
                     ${(cart.totalPrice * 1.1).toFixed(2)}
                   </span>
                 </div>
@@ -158,19 +158,19 @@ const Cart = () => {
                 <div className="grid gap-4 text-center mb-4">
                   <Link
                     to="/checkout"
-                    className="w-full bg-teal-500 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded transition duration-200"
+                    className="w-full bg-primary hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded transition duration-200"
                   >
                     Proceed to Checkout
                   </Link>
                   <Link
                     to="/shop"
-                    className="block text-center border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white font-semibold py-3 px-4 rounded transition duration-200"
+                    className="block text-center border border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-4 rounded transition duration-200"
                   >
                     Continue Shopping
                   </Link>
                 </div>
 
-                <div className="text-slate-400 text-sm">
+                <div className="text-lightWhite text-sm">
                   <p>Items in cart: {cart.totalQuantity}</p>
                 </div>
               </div>

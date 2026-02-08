@@ -42,10 +42,12 @@ const WhishListPage = () => {
     <div className="min-h-screen bg-[#232222] py-8">
       {data.items.length === 0 ? (
         <div className="text-center lg:mt-20 grid items-center justify-center">
-          <p className="text-slate-300 text-xl mb-4">Your WhishList is empty</p>
+          <p className="text-lightWhite text-xl mb-4">
+            Your WhishList is empty
+          </p>
           <Link
             to="/shop"
-            className="text-teal-500 hover:text-teal-400 underline"
+            className="text-primary hover:text-teal-400 underline"
           >
             Continue Shopping
           </Link>
@@ -58,7 +60,7 @@ const WhishListPage = () => {
             </h1>
 
             <div className="flex justify-start gap-2 p-2 lg:p-0">
-              <p className="text-pink-600">Number of products :</p>
+              <p className="text-secondary">Number of products :</p>
               <span> {data.items.length}</span>
             </div>
           </div>
@@ -68,7 +70,7 @@ const WhishListPage = () => {
                 <Product product={item} />
                 <button
                   onClick={() => handleRemoveItem(item.id)}
-                  className="bg-pink-600 rounded px-2 py-1 capitalize hover:bg-pink-700 text-white"
+                  className="bg-secondary rounded px-2 py-1 capitalize hover:bg-pink-700 text-white"
                 >
                   remove
                 </button>

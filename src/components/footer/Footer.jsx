@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="bg-[#232222] lg:mx-10 py-5 text-center capitalize">
       <span className="flex items-center justify-center gap-1">
-        <CgCopyright className="text-teal-500" /> {currentYear} All rights
+        <CgCopyright className="text-primary" /> {currentYear} All rights
         reserved
       </span>
     </div>

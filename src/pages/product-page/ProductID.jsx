@@ -76,16 +76,18 @@ const ProductID = () => {
   };
 
   return (
-    <div className="bg-[#232222] grid lg:grid-cols-5 rounded border lg:p-6 px-3 py-8 lg:px-12 gap-6 border-teal-900 hover:border-teal-500 transition-colors overflow-hidden group">
-      <div className="border border-teal-900 group-hover:border-teal-500 p-4 rounded col-span-2">
+    <div className="bg-[#232222] grid lg:grid-cols-5 rounded border lg:p-6 px-3 py-8 lg:px-12 gap-6 border-teal-900 hover:border-primary transition-colors overflow-hidden group">
+      <div className="border border-teal-900 group-hover:border-primary p-4 rounded col-span-2">
         <img src={product.image} className="h-full w-full" />
       </div>
       <div className="flex flex-col gap-4 col-span-3">
-        <h1 className="text-3xl text-teal-500">{product.title}</h1>
-        <p className="w-8/12 text-slate-200">{product.description}</p>
+        <h1 className="text-3xl text-primary">{product.title}</h1>
+        <p className="w-8/12 text-lightWhite opacity-85">
+          {product.description}
+        </p>
         <div className="border rounded p-4 grid gap-2">
-          <span className="text-slate-400 text-lg">Price</span>
-          <p className="text-lg text-pink-600"> ${product.price.toFixed(2)}</p>
+          <span className="text-lightWhite opacity-85 text-lg">Price</span>
+          <p className="text-lg text-secondary"> ${product.price.toFixed(2)}</p>
         </div>
         {/* Rating Section */}
         <div className="flex items-center gap-4 mb-4 pb-4 border-b border-primary-500/20">
@@ -95,12 +97,14 @@ const ProductID = () => {
               {mockRating.average}
             </span>
           </div>
-          <span className="text-slate-400">({mockRating.count} reviews)</span>
+          <span className="text-lightWhite opacity-85">
+            ({mockRating.count} reviews)
+          </span>
         </div>
 
         {/* Quantity Selector */}
         <div className="flex items-center gap-4">
-          <span className="text-slate-300 font-semibold">Quantity :</span>
+          <span className="text-lightWhite font-semibold">Quantity :</span>
           <div className="flex items-center gap-3 bg-dark-bg border border-primary-500/20 rounded p-2">
             <button
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -124,12 +128,12 @@ const ProductID = () => {
         <div className="flex gap-4">
           <button
             onClick={handleAddToCart}
-            className="border-teal-500 border hover:bg-primary-600 text-white font-bold py-2 px-6 rounded transition-all duration-200 flex items-center justify-center gap-2 group"
+            className="border-primary border hover:bg-primary-600 text-white font-bold py-2 px-6 rounded transition-all duration-200 flex items-center justify-center gap-2 group"
           >
             <FaShoppingCart className="group-hover:scale-110 transition-transform" />
             Add to Cart
           </button>
-          <button className="border-pink-600 text-pink-600 border hover:bg-primary-600 font-bold py-2 px-6 rounded transition-all duration-200 flex items-center justify-center gap-2 group">
+          <button className="border-secondary text-secondary border hover:bg-primary-600 font-bold py-2 px-6 rounded transition-all duration-200 flex items-center justify-center gap-2 group">
             <FaHeart className="group-hover:scale-110 transition-transform" />
             Wishlist
           </button>
@@ -151,7 +155,7 @@ const ProductID = () => {
             </div>
             <button
               disabled={userRating === 0}
-              className="w-full bg-teal-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary-600 text-white font-bold py-2 px-4 rounded transition-colors"
+              className="w-full bg-primary disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary-600 text-white font-bold py-2 px-4 rounded transition-colors"
             >
               Submit Rating
             </button>

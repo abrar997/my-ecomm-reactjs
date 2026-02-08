@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/slice/cartSlice";
 import Product from "../../reusable/Product/Product";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import { fetchProducts } from "../../../redux/slice/productSlice";
+import { AddToWhishList } from "../../../redux/slice/whishlistSlice";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { fetchProducts } from "../../../redux/slice/productSlice";
-import { AddToWhishList } from "../../../redux/slice/whishlistSlice";
 
 const TrendingProducts = () => {
   const { products } = useSelector((state) => state.products);
@@ -53,10 +53,10 @@ const TrendingProducts = () => {
   return (
     <div className="lg:py-16 py-10 bg-[#232222] relative">
       <div className="grid gap-2 text-center lg:pb-8 pb-7">
-        <h1 className="lg:text-4xl text-3xl text-teal-500 font-semibold">
+        <h1 className="lg:text-4xl text-3xl text-primary font-semibold">
           Trending Products
         </h1>
-        <p className="text-slate-300">
+        <p className="text-lightWhite">
           Browse products from our most popular categories.
         </p>
       </div>
@@ -104,12 +104,12 @@ const TrendingProducts = () => {
             </SwiperSlide>
           ))}
           <div className="flex justify-between absolute inset-y-1/2 w-full z-10">
-            <button className="prev-btn bg-pink-600 hover:bg-pink-700 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+            <div className="prev-btn border hover:border-0 border-slate-400 hover:bg-secondary text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
               <BiLeftArrow />
-            </button>
-            <button className="next-btn bg-pink-600 hover:bg-pink-700 text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+            </div>
+            <div className="next-btn  border hover:bg-secondary hover:border-0 border-slate-400  text-white cursor-pointer w-10 h-10 rounded-full flex items-center justify-center">
               <BiRightArrow />
-            </button>
+            </div>
           </div>
         </Swiper>
       </div>

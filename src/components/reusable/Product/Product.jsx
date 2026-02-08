@@ -6,7 +6,7 @@ const Product = ({ idx, handleAddToCart, product, handleAddToWhishList }) => {
   return (
     <div
       key={idx}
-      className="bg-[#232222] rounded border border-teal-900 hover:border-teal-500 transition-colors overflow-hidden group"
+      className="bg-[#232222] rounded border border-teal-900 hover:border-primary transition-colors overflow-hidden group"
     >
       <div className="relative lg:h-64 h-30 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
         <img
@@ -17,13 +17,13 @@ const Product = ({ idx, handleAddToCart, product, handleAddToWhishList }) => {
         <div className="absolute text-xl inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
           <button
             onClick={() => handleAddToCart(product)}
-            className="bg-teal-500 hover:bg-teal-700 text-white p-3 rounded-full transition-colors"
+            className="bg-primary hover:bg-teal-700 text-white p-3 rounded-full transition-colors"
           >
             <BsBasket />
           </button>
           <button
             onClick={() => handleAddToWhishList(product)}
-            className={`bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors ${location.pathname === "/whishlist" && "hidden"}`}
+            className={`bg-secondary hover:bg-pink-700 text-white p-3 rounded-full transition-colors ${location.pathname === "/whishlist" && "hidden"}`}
           >
             <BsHeart />
           </button>
@@ -31,19 +31,19 @@ const Product = ({ idx, handleAddToCart, product, handleAddToWhishList }) => {
       </div>
 
       <div className="p-4">
-        <h3 className="text-teal-500 font-semibold mb-2 line-clamp-1 text-sm">
+        <h3 className="text-primary font-semibold mb-2 line-clamp-1 text-sm">
           {product.title}
         </h3>
         <p className="text-gray-300 text-xs line-clamp-2 mb-4">
           {product.description}
         </p>
         <div className="flex justify-between items-center">
-          <span className="text-pink-600 font-bold">
+          <span className="text-secondary font-bold">
             ${product.price.toFixed(2)}
           </span>
           <Link
             to={`/product/${product.id}`}
-            className="text-teal-500 hover:text-teal-400 text-xs font-semibold"
+            className="text-primary hover:text-teal-400 text-xs font-semibold"
           >
             View
           </Link>

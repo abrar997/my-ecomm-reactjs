@@ -19,7 +19,7 @@ import {
 } from "./pages";
 function App() {
   return (
-    <div className="bg-[#2e2e2e]">
+    <div className="bg-main">
       <BrowserRouter>
         <Header />
         <div className="py-4 lg:py-6 lg:px-10 px-2">

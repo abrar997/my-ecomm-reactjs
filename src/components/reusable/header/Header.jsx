@@ -97,8 +97,8 @@ const Header = () => {
 
   const activeLink = ({ isActive }) =>
     isActive
-      ? "text-teal-500 text-lg border-b capitalize px-1"
-      : "text-lg capitalize text-white hover:text-teal-500 transition-colors";
+      ? "text-primary text-lg border-b capitalize px-1"
+      : "text-lg capitalize text-white hover:text-primary transition-colors";
 
   return (
     <>
@@ -115,9 +115,11 @@ const Header = () => {
             : "bg-[#232222]"
         }`}
       >
-        <div className="relative lg:px-10 px-4">
-          <div className="flex justify-between  w-full lg:p-3 lg:px-5 items-center gap-4">
-            <h1 className="lg:text-2xl font-bold text-teal-500">A-Shop</h1>
+        <div className="relative lg:px-10 px-4 py-2 lg:py-0">
+          <div className="flex justify-between w-full lg:p-3 lg:px-5 items-center gap-4">
+            <h1 className="lg:text-2xl text-xl font-bold text-primary">
+              A-Shop
+            </h1>
 
             <div className="lg:flex gap-5 m-auto items-center col-span-2 justify-center hidden">
               {Links.map((link, idx) => (
@@ -127,34 +129,17 @@ const Header = () => {
               ))}
             </div>
             <div className="flex items-center gap-4">
-              <ShowOnLogin>
-                <div className="py-4 lg:p-0 flex items-center gap-3 lg:gap-4 lg:justify-end">
-                  <Link
-                    to="/cart"
-                    className="text-xl relative border border-teal-500 rounded lg:p-2 p-1 hover:bg-teal-500 hover:text-white transition-all"
-                  >
-                    <FaShoppingCart />
-                    <span className="bg-red-600 text-white rounded-full w-5 h-5 -top-4 -right-2 absolute flex items-center justify-center text-xs font-bold">
-                      {cart.items.length}
-                    </span>
-                  </Link>
-                  <Link
-                    to="/whishlist"
-                    className="text-xl relative border border-teal-500 rounded lg:p-2 p-1 hover:bg-teal-500 hover:text-white transition-all"
-                  >
-                    <BsHeart />
-                    <span className="bg-red-600 text-white rounded-full w-5 h-5 -top-4 -right-2 absolute flex items-center justify-center text-xs font-bold">
-                      {whishList.items.length}
-                    </span>
-                  </Link>
-                  <button
-                    onClick={() => setShow(!show)}
-                    className="text-2xl text-teal-500 hover:text-teal-400 lg:hidden"
-                  >
-                    <HiOutlineMenuAlt3 />
-                  </button>
-                </div>
-              </ShowOnLogin>
+              <div>
+                <ShowOnLogin>
+                  <ShoppingItems cart={cart} whishList={whishList} />
+                </ShowOnLogin>
+                <button
+                  onClick={() => setShow(!show)}
+                  className="text-2xl text-primary hover:text-teal-400 lg:hidden"
+                >
+                  <HiOutlineMenuAlt3 />
+                </button>
+              </div>
               <div className="hidden lg:flex items-center lg:gap-4">
                 <Button isBorder to="/login" text="Login" />
 
@@ -179,7 +164,7 @@ const Header = () => {
               <div className="fixed top-0 left-0 bg-black w-screen h-screen bg-main-700 z-30 py-16 px-4 flex flex-col gap-6 animate-slide-in">
                 <button
                   onClick={() => setShow(false)}
-                  className="text-2xl text-teal-500 ml-auto absolute top-4 right-4"
+                  className="text-2xl text-primary ml-auto absolute top-4 right-4"
                 >
                   <BsX />
                 </button>
@@ -197,17 +182,17 @@ const Header = () => {
                   ))}
                 </div>
 
-                <div className="border-t border-teal-500/30 pt-4 flex flex-col gap-3">
+                <div className="border-t border-primary/30 pt-4 flex flex-col gap-3">
                   <Link
                     to="/signup"
-                    className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded font-semibold text-center transition-colors"
+                    className="bg-primary hover:bg-teal-600 text-white px-4 py-2 rounded font-semibold text-center transition-colors"
                     onClick={() => setShow(false)}
                   >
                     Sign up
                   </Link>
                   <Link
                     to="/login"
-                    className="border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white px-4 py-2 rounded font-semibold text-center transition-colors"
+                    className="border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded font-semibold text-center transition-colors"
                     onClick={() => setShow(false)}
                   >
                     Login
@@ -222,6 +207,8 @@ const Header = () => {
   );
 };
 
+export default Header;
+
 const UserMenu = ({
   mainMenu,
   setMainMenu,
@@ -233,7 +220,7 @@ const UserMenu = ({
     <div className="flex items-center gap-2">
       <button
         onClick={() => setMainMenu(!mainMenu)}
-        className="bg-slate-50 rounded-full w-10 h-10 text-teal-500 flex items-center justify-center  transition-colors"
+        className="bg-lightWhite rounded-full w-10 h-10 text-primary flex items-center justify-center  transition-colors"
       >
         {photoURL ? (
           <img
@@ -246,20 +233,20 @@ const UserMenu = ({
         )}
       </button>
       {displayName && (
-        <span className="text-sm text-teal-500 font-semibold whitespace-nowrap">
+        <span className="text-sm text-primary font-semibold whitespace-nowrap">
           {displayName}
         </span>
       )}
     </div>
     {mainMenu && (
-      <div className="absolute bg-slate-50 right-0 top-12 w-48 bg-light-text text-black rounded shadow-lg border border-gray-200 overflow-hidden z-50 animate-fade-in">
+      <div className="absolute  right-0 top-12 w-48 bg-lightWhite text-black rounded shadow-lg border border-gray-200 overflow-hidden z-50 animate-fade-in">
         <MenuLink icon={<CgUserAdd />} label="Sign up" to="/signup" />
         <ShowOnLogin>
           <button
             onClick={handleLogout}
             className="w-full flex items-center gap-3 p-3 hover:bg-gray-100 border-b border-gray-200 transition-colors"
           >
-            <span className="text-teal-500 border rounded p-1">
+            <span className="text-primary border rounded p-1">
               <BiLogOut />
             </span>
             <span>Logout</span>
@@ -276,9 +263,32 @@ const MenuLink = ({ icon, label, to }) => (
     to={to}
     className="flex items-center gap-3 p-3 hover:bg-gray-100 border-b border-gray-200 last:border-b-0 transition-colors"
   >
-    <span className="text-teal-500 border rounded p-1">{icon}</span>
+    <span className="text-primary border rounded p-1">{icon}</span>
     <span>{label}</span>
   </Link>
 );
 
-export default Header;
+const ShoppingItems = ({ cart, whishList }) => {
+  return (
+    <div className="lg:p-0 flex flex-col lg:sticky fixed right-0 top-80 inset-y-1.5 lg:flex-row lg:items-center gap-5 lg:gap-4 lg:justify-end justify-center bg-[#434141d8] lg:bg-transparent rounded lg:rounded-0 w-12 h-24 lg:w-full lg:h-full backdrop-brightness-110">
+      <Link
+        to="/cart"
+        className="text-xl flex items-center justify-center relative lg:border border-primary rounded lg:p-2 p-1 lg:hover:bg-primary hover:text-white transition-all"
+      >
+        <FaShoppingCart />
+        <span className="bg-red-600 text-white rounded-full w-5 h-5 lg:-top-4 -top-2 right-1 lg:-right-2 absolute flex items-center justify-center text-xs font-bold">
+          {cart.items.length}
+        </span>
+      </Link>
+      <Link
+        to="/whishlist"
+        className="text-xl flex items-center justify-center relative lg:border border-primary rounded lg:p-2 p-1 lg:hover:bg-primary hover:text-white transition-all"
+      >
+        <BsHeart />
+        <span className="bg-red-600 text-white rounded-full w-5 h-5 lg:-top-4 -top-2 right-1 lg:-right-2 absolute flex items-center justify-center text-xs font-bold">
+          {whishList.items.length}
+        </span>
+      </Link>
+    </div>
+  );
+};
