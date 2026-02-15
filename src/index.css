@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --background-main: #444343;
+  --background-color-main: #444343;
   --color-primary: oklch(70.4% 0.14 182.503);
   --background-primary: #403f3f;
   --color-secondary: #db2777;
   --color-lightWhite: #cad5e2;
   --background-section: #232222;
-  --background-secondaryBg: #232222;
+  --background-secondary: #232222;
 }
 
 :root {
@@ -27,23 +27,4 @@
 
 button {
   cursor: pointer;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-@layer base {
-  :root {
-    --background-color-main: var(--main-color);
-  }
 }
