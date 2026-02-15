@@ -45,14 +45,18 @@ const Login = () => {
     <>
       {isLoading && <Loader />}
       <ToastContainer />
-      <div className="lg:flex lg:flex-col lg:items-center lg:justify-center lg:p-12 p-4 py-6">
+      <div className="lg:flex lg:flex-col lg:items-center lg:justify-center lg:p-12 p-4 py-6 bg-[#232222]">
         <form
           action=""
           className="shadow-lg lg:p-6 p-4 rounded-tr lg:w-1/2 lg:m-auto rounded-br grid gap-3 border border-teal-800"
           onSubmit={handleSubmit}
         >
-          <h1 className="text-2xl capitalize text-center">Login</h1>
-
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="text-2xl capitalize text-center font-semibold">
+              Login
+            </h1>
+            <p className="opacity-60">login to your account</p>
+          </div>
           <div className="grid gap-2">
             <label htmlFor="email" className="capitalize text-primary">
               Email

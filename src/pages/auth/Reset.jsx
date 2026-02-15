@@ -24,8 +24,8 @@ const Reset = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <ToastContainer />{" "}
-      <div className="lg:flex lg:items-center lg:justify-center lg:p-12 p-4">
+      <ToastContainer />
+      <div className="lg:flex lg:items-center lg:justify-center lg:p-12 p-4 bg-[#232222] lg:h-[73vh]">
         <form
           action=""
           className="shadow-lg lg:p-6 p-4 rounded-tr lg:w-1/2 lg:m-auto rounded-br grid gap-3 bg-main border border-teal-800"

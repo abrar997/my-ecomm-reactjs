@@ -20,13 +20,14 @@ import {
 import ShowOnLogin from "../../hiddenLink/hiddenLink";
 import { Button } from "../..";
 import "react-toastify/dist/ReactToastify.css";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [show, setShow] = useState(false);
-  const [mainMenu, setMainMenu] = useState(false);
   const [displayName, setDisplayName] = useState("");
   const [photoURL, setPhotoURL] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -144,11 +145,11 @@ const Header = () => {
                 <Button isBorder to="/login" text="Login" />
 
                 <UserMenu
-                  mainMenu={mainMenu}
-                  setMainMenu={setMainMenu}
                   displayName={displayName}
                   photoURL={photoURL}
                   handleLogout={handleLogout}
+                  isVisible={isVisible}
+                  setIsVisible={setIsVisible}
                 />
               </div>
             </div>
@@ -210,17 +211,43 @@ const Header = () => {
 export default Header;
 
 const UserMenu = ({
-  mainMenu,
-  setMainMenu,
+  isVisible,
+  setIsVisible,
   displayName,
   photoURL,
   handleLogout,
 }) => (
   <div className="relative">
+    <AnimatePresence initial={false}>
+      {isVisible ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          key="box"
+          className="absolute top-14 right-0 flex flex-col w-40 rounded  bg-black/20"
+        >
+          <MenuLink icon={<CgUserAdd />} label="Sign up" to="/signup" />
+          <ShowOnLogin>
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 p-3 hover:bg-black/50 border-b border-teal-200 transition-colors"
+            >
+              <span className="text-primary border rounded p-1">
+                <BiLogOut />
+              </span>
+              <span>Logout</span>
+            </button>
+          </ShowOnLogin>
+          <MenuLink icon={<CgProfile />} label="Profile" to="/profile" />
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
     <div className="flex items-center gap-2">
-      <button
-        onClick={() => setMainMenu(!mainMenu)}
-        className="bg-lightWhite rounded-full w-10 h-10 text-primary flex items-center justify-center  transition-colors"
+      <motion.button
+        onClick={() => setIsVisible(!isVisible)}
+        whileTap={{ y: 1 }}
+        className="w-10 h-10 items-center flex gap-2"
       >
         {photoURL ? (
           <img
@@ -229,39 +256,22 @@ const UserMenu = ({
             className="rounded-full w-full h-full object-cover"
           />
         ) : (
-          <CgUser className="text-xl" />
+          <CgUser className="text-xl p-1 border w-full h-full h-full rounded-full" />
         )}
-      </button>
-      {displayName && (
-        <span className="text-sm text-primary font-semibold whitespace-nowrap">
-          {displayName}
-        </span>
-      )}
+        {displayName && (
+          <span className="text-sm text-primary font-semibold whitespace-nowrap">
+            {displayName}
+          </span>
+        )}
+      </motion.button>
     </div>
-    {mainMenu && (
-      <div className="absolute  right-0 top-12 w-48 bg-lightWhite text-black rounded shadow-lg border border-gray-200 overflow-hidden z-50 animate-fade-in">
-        <MenuLink icon={<CgUserAdd />} label="Sign up" to="/signup" />
-        <ShowOnLogin>
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center gap-3 p-3 hover:bg-gray-100 border-b border-gray-200 transition-colors"
-          >
-            <span className="text-primary border rounded p-1">
-              <BiLogOut />
-            </span>
-            <span>Logout</span>
-          </button>
-        </ShowOnLogin>
-        <MenuLink icon={<CgProfile />} label="Profile" to="/profile" />
-      </div>
-    )}
   </div>
 );
 
 const MenuLink = ({ icon, label, to }) => (
   <Link
     to={to}
-    className="flex items-center gap-3 p-3 hover:bg-gray-100 border-b border-gray-200 last:border-b-0 transition-colors"
+    className="w-full flex items-center gap-3 p-3 hover:bg-black/50 border-b border-teal-200 transition-colors"
   >
     <span className="text-primary border rounded p-1">{icon}</span>
     <span>{label}</span>

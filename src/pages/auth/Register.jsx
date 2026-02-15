@@ -44,14 +44,14 @@ const Register = () => {
       )}
 
       <div
-        className={`grid lg:grid-cols-2 lg:w-8/12 lg:m-auto lg:items-center lg:justify-center lg:p-12 py-6`}
+        className={`grid lg:grid-cols-2  lg:m-auto lg:items-center lg:justify-center lg:p-12 py-6 bg-[#232222] w-full`}
       >
-        <div className="col-span-1 h-full relative">
+        <div className="col-span-1 h-full relative ">
           <img
-            className="w-full h-full lg:rounded-tl lg:rounded-bl rounded-tl rounded-br"
+            className="w-full h-full"
             src="https://images.unsplash.com/photo-1505308843978-ea2cb9913b44?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
-          <div className="absolute inset-0 bg-[#234d4dbd] flex items-center justify-center">
+          <div className="absolute inset-0 bg-[#234d4de0] flex items-center justify-center">
             <h1 className="lg:text-5xl text-3xl font-semibold capitalize w-10/12 tracking-wide leading-16 text-center text-lightWhite [text-shadow:0_2px_8px_rgba(0,0,0,0.4)]">
               start your shopping with us
             </h1>
@@ -60,9 +60,9 @@ const Register = () => {
         <form
           action=""
           onSubmit={registerUser}
-          className="shadow-lg p-6 lg:rounded-tr lg:rounded-br rounded-br rounded-bl grid gap-3 bg-main border border-teal-800"
+          className="shadow-lg p-6 grid gap-3 bg-main  border-teal-800"
         >
-          <h1 className="text-2xl capitalize text-center lg:text-left">
+          <h1 className="text-2xl capitalize text-center lg:text-left font-semibold">
             create new account
           </h1>
 
